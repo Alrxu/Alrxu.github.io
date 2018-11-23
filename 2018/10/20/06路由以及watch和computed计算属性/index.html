@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>路由以及watch和computed计算属性 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是路由 对于普通的网站，所有的超链接都是URL地址，所有的URL地址都对应服务器上对应的资源；  对于单页面应用程序来说，主要通过URL中的hash(#号)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会包含hash相关的内容；所以，单页面程序中的页面跳转主要用hash实现；  在单页面应用程序中，这种通过hash改变来切换页面的方式，称作前端路由（区别于后端路由）；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由以及watch和computed计算属性">
+<meta property="og:url" content="https://Alrxu.github.io/2018/10/20/06路由以及watch和computed计算属性/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是路由 对于普通的网站，所有的超链接都是URL地址，所有的URL地址都对应服务器上对应的资源；  对于单页面应用程序来说，主要通过URL中的hash(#号)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会包含hash相关的内容；所以，单页面程序中的页面跳转主要用hash实现；  在单页面应用程序中，这种通过hash改变来切换页面的方式，称作前端路由（区别于后端路由）；">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-15T05:45:47.554Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="路由以及watch和computed计算属性">
+<meta name="twitter:description" content="什么是路由 对于普通的网站，所有的超链接都是URL地址，所有的URL地址都对应服务器上对应的资源；  对于单页面应用程序来说，主要通过URL中的hash(#号)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会包含hash相关的内容；所以，单页面程序中的页面跳转主要用hash实现；  在单页面应用程序中，这种通过hash改变来切换页面的方式，称作前端路由（区别于后端路由）；">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-06路由以及watch和computed计算属性" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/10/20/06路由以及watch和computed计算属性/" class="article-date">
+  <time datetime="2018-10-20T05:56:28.023Z" itemprop="datePublished">2018-10-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      路由以及watch和computed计算属性
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="什么是路由"><a href="#什么是路由" class="headerlink" title="什么是路由"></a>什么是路由</h2><ol>
+<li><p>对于普通的网站，所有的超链接都是URL地址，所有的URL地址都对应服务器上对应的资源；</p>
+</li>
+<li><p>对于单页面应用程序来说，主要通过URL中的hash(#号)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会包含hash相关的内容；所以，单页面程序中的页面跳转主要用hash实现；</p>
+</li>
+<li><p>在单页面应用程序中，这种通过hash改变来切换页面的方式，称作前端路由（区别于后端路由）；</p>
+</li>
+</ol>
+<h2 id="在-vue-中使用-vue-router"><a href="#在-vue-中使用-vue-router" class="headerlink" title="在 vue 中使用 vue-router"></a>在 vue 中使用 vue-router</h2><ol>
+<li><p>导入 vue-router 组件类库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 1. 导入 vue-router 组件类库 --&gt;</span><br><span class="line">  &lt;script src=&quot;./lib/vue-router-2.7.0.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 router-link 组件来导航</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 2. 使用 router-link 组件来导航 --&gt;</span><br><span class="line">&lt;router-link to=&quot;/login&quot;&gt;登录&lt;/router-link&gt;</span><br><span class="line">&lt;router-link to=&quot;/register&quot;&gt;注册&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 router-view 组件来显示匹配到的组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 3. 使用 router-view 组件来显示匹配到的组件 --&gt;</span><br><span class="line">&lt;router-view&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建使用<code>Vue.extend</code>创建组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 4.1 使用 Vue.extend 来创建登录组件</span><br><span class="line">var login = Vue.extend(&#123;</span><br><span class="line">  template: &apos;&lt;h1&gt;登录组件&lt;/h1&gt;&apos;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 4.2 使用 Vue.extend 来创建注册组件</span><br><span class="line">var register = Vue.extend(&#123;</span><br><span class="line">  template: &apos;&lt;h1&gt;注册组件&lt;/h1&gt;&apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个路由 router 实例，通过 routers 属性来定义路由匹配规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 5. 创建一个路由 router 实例，通过 routers 属性来定义路由匹配规则</span><br><span class="line">    var router = new VueRouter(&#123;</span><br><span class="line">      routes: [</span><br><span class="line">        &#123; path: &apos;/login&apos;, component: login &#125;,</span><br><span class="line">        &#123; path: &apos;/register&apos;, component: register &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 router 属性来使用路由规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 6. 创建 Vue 实例，得到 ViewModel</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">      el: &apos;#app&apos;,</span><br><span class="line">      router: router // 使用 router 属性来使用路由规则</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="在路由规则中定义参数"><a href="#在路由规则中定义参数" class="headerlink" title="在路由规则中定义参数"></a>在路由规则中定义参数</h2><ol>
+<li><p>在规则中定义参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; path: &apos;/register/:id&apos;, component: register &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 <code>this.$route.params</code>来获取路由中的参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var register = Vue.extend(&#123;</span><br><span class="line">      template: &apos;&lt;h1&gt;注册组件 --- &#123;&#123;this.$route.params.id&#125;&#125;&lt;/h1&gt;&apos;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="使用-children-属性实现路由嵌套"><a href="#使用-children-属性实现路由嵌套" class="headerlink" title="使用 children 属性实现路由嵌套"></a>使用 <code>children</code> 属性实现路由嵌套</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;router-link to="/account"&gt;Account&lt;/router-link&gt;</span><br><span class="line"></span><br><span class="line">  &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 父路由中的组件</span></span><br><span class="line">  <span class="keyword">const</span> account = Vue.extend(&#123;</span><br><span class="line">    template: `&lt;div&gt;</span><br><span class="line">      这是account组件</span><br><span class="line">      &lt;router-link to="/account/login"&gt;login&lt;/router-link&gt; | </span><br><span class="line">      &lt;router-link to="/account/register"&gt;register&lt;/router-link&gt;</span><br><span class="line">      &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">    &lt;/div&gt;`</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 子路由中的 login 组件</span></span><br><span class="line">  <span class="keyword">const</span> login = Vue.extend(&#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;登录组件&lt;/div&gt;'</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 子路由中的 register 组件</span></span><br><span class="line">  <span class="keyword">const</span> register = Vue.extend(&#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;注册组件&lt;/div&gt;'</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 路由实例</span></span><br><span class="line">  <span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">      &#123; path: <span class="string">'/'</span>, redirect: <span class="string">'/account/login'</span> &#125;, <span class="comment">// 使用 redirect 实现路由重定向</span></span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">'/account'</span>,</span><br><span class="line">        component: account,</span><br><span class="line">        children: [ <span class="comment">// 通过 children 数组属性，来实现路由的嵌套</span></span><br><span class="line">          &#123; path: <span class="string">'login'</span>, component: login &#125;, <span class="comment">// 注意，子路由的开头位置，不要加 / 路径符</span></span><br><span class="line">          &#123; path: <span class="string">'register'</span>, component: register &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建 Vue 实例，得到 ViewModel</span></span><br><span class="line">  <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;&#125;,</span><br><span class="line">    methods: &#123;&#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">      account</span><br><span class="line">    &#125;,</span><br><span class="line">    router: router</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="computed计算属性的使用"><a href="#computed计算属性的使用" class="headerlink" title="computed计算属性的使用"></a><code>computed</code>计算属性的使用</h2><ol>
+<li><p>默认只有<code>getter</code>的计算属性：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"firstName"</span>&gt; +</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"lastName"</span>&gt; =</span><br><span class="line">    &lt;span&gt;&#123;&#123;fullName&#125;&#125;&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="comment">// 创建 Vue 实例，得到 ViewModel</span></span><br><span class="line">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">      el: <span class="string">'#app'</span>,</span><br><span class="line">      data: &#123;</span><br><span class="line">        firstName: <span class="string">'jack'</span>,</span><br><span class="line">        lastName: <span class="string">'chen'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;&#125;,</span><br><span class="line">      computed: &#123; <span class="comment">// 计算属性； 特点：当计算属性中所以来的任何一个 data 属性改变之后，都会重新触发 本计算属性 的重新计算，从而更新 fullName 的值</span></span><br><span class="line">        fullName() &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">this</span>.firstName + <span class="string">' - '</span> + <span class="keyword">this</span>.lastName;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义有<code>getter</code>和<code>setter</code>的计算属性：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"firstName"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"lastName"</span>&gt;</span><br><span class="line">    &lt;!-- 点击按钮重新为 计算属性 fullName 赋值 --&gt;</span><br><span class="line">    &lt;input type=<span class="string">"button"</span> value=<span class="string">"修改fullName"</span> <span class="meta">@click</span>=<span class="string">"changeName"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;span&gt;&#123;&#123;fullName&#125;&#125;&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="comment">// 创建 Vue 实例，得到 ViewModel</span></span><br><span class="line">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">      el: <span class="string">'#app'</span>,</span><br><span class="line">      data: &#123;</span><br><span class="line">        firstName: <span class="string">'jack'</span>,</span><br><span class="line">        lastName: <span class="string">'chen'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        changeName() &#123;</span><br><span class="line">          <span class="keyword">this</span>.fullName = <span class="string">'TOM - chen2'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      computed: &#123;</span><br><span class="line">        fullName: &#123;</span><br><span class="line">          get: function () &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.firstName + <span class="string">' - '</span> + <span class="keyword">this</span>.lastName;</span><br><span class="line">          &#125;,</span><br><span class="line">          set: function (newVal) &#123;</span><br><span class="line">            <span class="keyword">var</span> parts = newVal.split(<span class="string">' - '</span>);</span><br><span class="line">            <span class="keyword">this</span>.firstName = parts[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">this</span>.lastName = parts[<span class="number">1</span>];</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="watch、computed和methods之间的对比"><a href="#watch、computed和methods之间的对比" class="headerlink" title="watch、computed和methods之间的对比"></a><code>watch</code>、<code>computed</code>和<code>methods</code>之间的对比</h2><ol>
+<li><code>computed</code>属性的结果会被缓存，除非依赖的响应式属性变化才会重新计算。主要当作属性来使用；</li>
+<li><code>methods</code>方法表示一个具体的操作，主要书写业务逻辑；</li>
+<li><code>watch</code>一个对象，键是需要观察的表达式，值是对应回调函数。主要用来监听某些特定数据的变化，从而进行某些具体的业务逻辑操作；可以看作是<code>computed</code>和<code>methods</code>的结合体；</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/10/20/06路由以及watch和computed计算属性/" data-id="cjnh167gf0001p86xmyap7qv9" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/11/05/08-webpack/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          webpack
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/10/20/05组件之间的通信/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">组件之间的通讯</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是路由"><span class="toc-number">1.</span> <span class="toc-text">什么是路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在-vue-中使用-vue-router"><span class="toc-number">2.</span> <span class="toc-text">在 vue 中使用 vue-router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在路由规则中定义参数"><span class="toc-number">3.</span> <span class="toc-text">在路由规则中定义参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-children-属性实现路由嵌套"><span class="toc-number">4.</span> <span class="toc-text">使用 children 属性实现路由嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#computed计算属性的使用"><span class="toc-number">5.</span> <span class="toc-text">computed计算属性的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#watch、computed和methods之间的对比"><span class="toc-number">6.</span> <span class="toc-text">watch、computed和methods之间的对比</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

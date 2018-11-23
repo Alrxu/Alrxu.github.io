@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>css3渐变 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="渐变介绍 CSS3 渐变（gradients）可以让你在两个或多个指定的颜色之间显示平稳的颜色过渡。 通过使用 CSS3 渐变（gradients） 渐变（gradient）是由浏览器生成的， 以前实现类型的效果要使用图片 CSS3 定义了两种类型的渐变（gradients）： 线性渐变（Linear Gradients）- 向下/向上/向左/向右/对角方向 径向渐变（Radial Gradien">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css3渐变">
+<meta property="og:url" content="https://Alrxu.github.io/2018/08/30/css3渐变/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="渐变介绍 CSS3 渐变（gradients）可以让你在两个或多个指定的颜色之间显示平稳的颜色过渡。 通过使用 CSS3 渐变（gradients） 渐变（gradient）是由浏览器生成的， 以前实现类型的效果要使用图片 CSS3 定义了两种类型的渐变（gradients）： 线性渐变（Linear Gradients）- 向下/向上/向左/向右/对角方向 径向渐变（Radial Gradien">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-30T06:06:27.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css3渐变">
+<meta name="twitter:description" content="渐变介绍 CSS3 渐变（gradients）可以让你在两个或多个指定的颜色之间显示平稳的颜色过渡。 通过使用 CSS3 渐变（gradients） 渐变（gradient）是由浏览器生成的， 以前实现类型的效果要使用图片 CSS3 定义了两种类型的渐变（gradients）： 线性渐变（Linear Gradients）- 向下/向上/向左/向右/对角方向 径向渐变（Radial Gradien">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-css3渐变" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/08/30/css3渐变/" class="article-date">
+  <time datetime="2018-08-30T06:06:40.315Z" itemprop="datePublished">2018-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css3渐变
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>CSS3 渐变（gradients）可以让你在两个或多个指定的颜色之间显示平稳的颜色过渡。</li>
+<li>通过使用 CSS3 渐变（gradients）</li>
+<li>渐变（gradient）是由浏览器生成的， 以前实现类型的效果要使用图片</li>
+<li>CSS3 定义了两种类型的渐变（gradients）：<ul>
+<li>线性渐变（Linear Gradients）- 向下/向上/向左/向右/对角方向</li>
+<li>径向渐变（Radial Gradients）- 由它们的中心定义</li>
+</ul>
+</li>
+<li>要想让渐变生效，需要把渐变设给background</li>
+</ul>
+<h3 id="线性渐变-linear"><a href="#线性渐变-linear" class="headerlink" title="线性渐变(linear)"></a>线性渐变(linear)</h3><ol>
+<li><p>默认是从上往下渐变</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*默认是从上往下发生渐变*/</span></span><br><span class="line"><span class="selector-id">#grad</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(red, blue); <span class="comment">/* 标准的语法 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(red, blue); <span class="comment">/* Safari 5.1 - 6.0 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(red, blue); <span class="comment">/* Opera 11.1 - 12.0 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(red, blue); <span class="comment">/* Firefox 3.6 - 15 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义渐变方向</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#grad</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(to left top, red , blue); <span class="comment">/* Safari 5.1 - 6.0 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(to bottom right, red, blue); <span class="comment">/* Opera 11.1 - 12.0 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(to bottom right, red, blue); <span class="comment">/* Firefox 3.6 - 15 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to bottom right, red , blue); <span class="comment">/* 标准的语法 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#grad2</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(80deg, red , blue); <span class="comment">/* Safari 5.1 - 6.0 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(80deg, red, blue); <span class="comment">/* Opera 11.1 - 12.0 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(80deg, red, blue); <span class="comment">/* Firefox 3.6 - 15 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(80deg, red , blue); <span class="comment">/* 标准的语法 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重复渐变</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#grad</span> &#123;</span><br><span class="line">  <span class="comment">/* Safari 5.1 - 6.0 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-webkit-repeating-linear-gradient</span>(red, yellow 10%, green 20%);</span><br><span class="line">  <span class="comment">/* Opera 11.1 - 12.0 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-o-repeating-linear-gradient</span>(red, yellow 10%, green 20%);</span><br><span class="line">  <span class="comment">/* Firefox 3.6 - 15 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">-moz-repeating-linear-gradient</span>(red, yellow 10%, green 20%);</span><br><span class="line">  <span class="comment">/* 标准的语法 */</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">repeating-linear-gradient</span>(red, yellow 10%, green 20%);</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  解释： 起始颜色是red，从起始位置到10%的位置渐变到red， 从10%至20%， 再由yellow渐变到green;此时， 渐变色并没有铺满整个元素，所以会重复平铺以填满元素</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><ul>
+<li>径向渐变是一个圆形的渐变，由圆心向四周发散的渐变</li>
+<li>需要设置的参数包括：<ul>
+<li>颜色（可以设多个）</li>
+<li>中心 (at center center)<ul>
+<li>语法（at x位置 y位置) 都是从左上角原点为参考</li>
+<li>x, y可以是像素 (at 30px 50px)</li>
+<li>可以是百分比 (at 10% 30%)</li>
+<li>也可以是top， left， right，center (at left bottom)</li>
+<li>at center center (默认值， 圆心在盒子的正中心位置)</li>
+</ul>
+</li>
+<li>大小<ul>
+<li>closest-side（最近边）</li>
+<li>farthest-side（最远边）</li>
+<li>closest-corner（最近角）</li>
+<li>farthest-corner（最远角, 默认值）</li>
+</ul>
+</li>
+<li>形状（默认是椭圆<ul>
+<li>elllipse（椭圆，默认值）</li>
+<li>circle</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="径向渐变演示"><a href="#径向渐变演示" class="headerlink" title="径向渐变演示"></a>径向渐变演示</h3><ol>
+<li><p>颜色演示</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(red, blue);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>中心点演示</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(at right bottom, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.box1</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(at 20% 20%, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.box2</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(at 20px 20px, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.box3</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(at center center, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>大小演示</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(closest-side at 30px 30px, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.box1</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(farthest-side at 30px 30px, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.box2</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(closest-corner at 30px 30px, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.box3</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(farthest-corner at 30px 30px, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>形状演示</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(circle closest-side at 30px 50px, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.box1</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: yellowgreen;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(ellipse closest-side at 30px 50px, red, blue);</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/08/30/css3渐变/" data-id="cjn9v9vvy0004v86x2tkvrthw" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/09/04/css3背景设置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          css3背景设置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/08/27/css3盒子阴影和文字阴影/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">css3盒子模型和阴影</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#渐变"><span class="toc-number">1.</span> <span class="toc-text">渐变</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性渐变-linear"><span class="toc-number">1.2.</span> <span class="toc-text">线性渐变(linear)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#径向渐变"><span class="toc-number">1.3.</span> <span class="toc-text">径向渐变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#径向渐变演示"><span class="toc-number">1.4.</span> <span class="toc-text">径向渐变演示</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

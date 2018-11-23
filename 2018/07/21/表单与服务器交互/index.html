@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>PHP表单与服务器交互 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="表单与服务器交互1. 表单与服务器交互初体验1.1 表单介绍 表单，即form标签 它可以包含文本框、复选框、单选框、提交按钮等。 作用：向服务器提交一段数据。  1.2 表单语法1234&amp;lt;form action=&apos;地址&apos;&amp;gt;    &amp;lt;!-- 表单元素列表 --&amp;gt;    &amp;lt;input type=&quot;submit&quot;&amp;gt;&amp;lt;/form&amp;gt;  说明：   表单元素列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP表单与服务器交互">
+<meta property="og:url" content="https://Alrxu.github.io/2018/07/21/表单与服务器交互/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="表单与服务器交互1. 表单与服务器交互初体验1.1 表单介绍 表单，即form标签 它可以包含文本框、复选框、单选框、提交按钮等。 作用：向服务器提交一段数据。  1.2 表单语法1234&amp;lt;form action=&apos;地址&apos;&amp;gt;    &amp;lt;!-- 表单元素列表 --&amp;gt;    &amp;lt;input type=&quot;submit&quot;&amp;gt;&amp;lt;/form&amp;gt;  说明：   表单元素列">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1524820606076.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1524821156629.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1520844955001.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1520845815057.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1521014270503.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1521083051915.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1524900233102.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1524902586372.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/07/21/alrxu/1524902420673.png">
+<meta property="og:updated_time" content="2018-07-21T07:55:39.686Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP表单与服务器交互">
+<meta name="twitter:description" content="表单与服务器交互1. 表单与服务器交互初体验1.1 表单介绍 表单，即form标签 它可以包含文本框、复选框、单选框、提交按钮等。 作用：向服务器提交一段数据。  1.2 表单语法1234&amp;lt;form action=&apos;地址&apos;&amp;gt;    &amp;lt;!-- 表单元素列表 --&amp;gt;    &amp;lt;input type=&quot;submit&quot;&amp;gt;&amp;lt;/form&amp;gt;  说明：   表单元素列">
+<meta name="twitter:image" content="https://alrxu.github.io/2018/07/21/alrxu/1524820606076.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-表单与服务器交互" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/07/21/表单与服务器交互/" class="article-date">
+  <time datetime="2018-07-21T07:41:11.810Z" itemprop="datePublished">2018-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP表单与服务器交互
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="表单与服务器交互"><a href="#表单与服务器交互" class="headerlink" title="表单与服务器交互"></a>表单与服务器交互</h1><h2 id="1-表单与服务器交互初体验"><a href="#1-表单与服务器交互初体验" class="headerlink" title="1. 表单与服务器交互初体验"></a>1. 表单与服务器交互初体验</h2><h3 id="1-1-表单介绍"><a href="#1-1-表单介绍" class="headerlink" title="1.1 表单介绍"></a>1.1 表单介绍</h3><ul>
+<li>表单，即<code>form</code>标签</li>
+<li>它可以包含文本框、复选框、单选框、提交按钮等。</li>
+<li>作用：向服务器提交一段数据。</li>
+</ul>
+<h3 id="1-2-表单语法"><a href="#1-2-表单语法" class="headerlink" title="1.2 表单语法"></a>1.2 表单语法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">'地址'</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 表单元素列表 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：</p>
+</blockquote>
+<ul>
+<li>表单元素列表里可以写文本框、密码框等一切你希望用户输入的数据。</li>
+<li>一般情况下表单元素列表的最后会写个  <code>submit</code>  提交按钮，<code>submit</code>  标签不用写任何JS代码就可以在它被点击后把表单里的内容传给服务器。</li>
+</ul>
+<blockquote>
+<p>例：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- action填的是地址，代表提交到哪个服务器页面 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"./result.php"</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 此文本框加了name属性，不加name属性无法把它的数据提交到服务器 --&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"star"</span> <span class="attr">placeholder</span>=<span class="string">"请输入你喜欢的明星！"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：只有加了name属性的才能提交到服务器</p>
+</blockquote>
+<h3 id="1-3-action属性"><a href="#1-3-action属性" class="headerlink" title="1.3 action属性"></a>1.3 action属性</h3><ul>
+<li>表单数据提交到哪。</li>
+</ul>
+<blockquote>
+<p>例： action=”./result.php”  即把表单提交到同目录下的 <code>result.php</code> 文件</p>
+</blockquote>
+<h3 id="1-4-服务端拿到表单提交的数据"><a href="#1-4-服务端拿到表单提交的数据" class="headerlink" title="1.4 服务端拿到表单提交的数据"></a>1.4 服务端拿到表单提交的数据</h3><h4 id="1-4-1-超全局变量"><a href="#1-4-1-超全局变量" class="headerlink" title="1.4.1 超全局变量"></a>1.4.1 超全局变量</h4><ul>
+<li>就是一个默认存在的变量，类似于JS中的window</li>
+<li>不需要声明，直接可以用</li>
+</ul>
+<h4 id="1-4-2-GET变量"><a href="#1-4-2-GET变量" class="headerlink" title="1.4.2 $_GET变量"></a>1.4.2 $_GET变量</h4><ul>
+<li>是一个超全局变量</li>
+<li>能拿到默认情况下表单传递过来的数据</li>
+</ul>
+<blockquote>
+<p>语法：</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_GET[<span class="string">'key'</span>];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例：</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_GET[<span class="string">'star'</span>]; <span class="comment">//拿到表单提交过来的数据中name为star元素的值</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-4-3-图解"><a href="#1-4-3-图解" class="headerlink" title="1.4.3 图解"></a>1.4.3 图解</h4><p><img src="/2018/07/21/表单与服务器交互/../alrxu/1524820606076.png" alt=""></p>
+<h4 id="1-4-4-判断数据是否存在"><a href="#1-4-4-判断数据是否存在" class="headerlink" title="1.4.4 判断数据是否存在"></a>1.4.4 判断数据是否存在</h4><h5 id="1-4-4-1-写了不存在的key会报错"><a href="#1-4-4-1-写了不存在的key会报错" class="headerlink" title="1.4.4.1 写了不存在的key会报错"></a>1.4.4.1 写了不存在的key会报错</h5><blockquote>
+<p>接上例，如果我不小心把  <code>$_GET</code>  里的key写错了，写成如下</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_GET[<span class="string">'star2'</span>];<span class="comment">//提交来的没有name为start2的数据</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>引发下图报错</p>
+</blockquote>
+<p><img src="/2018/07/21/表单与服务器交互/../alrxu/1524821156629.png" alt=""></p>
+<h5 id="1-4-4-2-isset使用"><a href="#1-4-4-2-isset使用" class="headerlink" title="1.4.4.2 isset使用"></a>1.4.4.2 isset使用</h5><ul>
+<li>isset可以用来判断是否存在某个值</li>
+</ul>
+<blockquote>
+<p>语法：</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">isset</span>(变量);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例：</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">isset</span>($_GET[<span class="string">'star'</span>]);   <span class="comment">//判断$_GET中是否有以star为key的值，如果有返回true,如果没有返回false</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>修改上例的 <code>result.php</code> 代码</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置编码</span></span><br><span class="line">    header(<span class="string">'content-type:text/html;charset=utf-8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'star'</span>]))&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//取到name为star的值</span></span><br><span class="line">        $value = $_GET[<span class="string">'star'</span>];</span><br><span class="line">    </span><br><span class="line">        <span class="comment">//拼接字符串并输出</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"原来你喜欢"</span>.$value;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'数据有误'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-get请求和post请求"><a href="#2-get请求和post请求" class="headerlink" title="2.get请求和post请求"></a>2.get请求和post请求</h2><h3 id="2-1-get请求"><a href="#2-1-get请求" class="headerlink" title="2.1 get请求"></a>2.1 get请求</h3><h4 id="2-1-1-get请求介绍"><a href="#2-1-1-get请求介绍" class="headerlink" title="2.1.1 get请求介绍"></a>2.1.1 get请求介绍</h4><ul>
+<li>以网址的形式把数据提交到服务器，叫get请求</li>
+</ul>
+<h4 id="2-1-2-用get请求做登录"><a href="#2-1-2-用get请求做登录" class="headerlink" title="2.1.2 用get请求做登录"></a>2.1.2 用get请求做登录</h4><ul>
+<li>界面代码如下：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 一个账号框，一个密码框，加一个登录按钮,提交到login.php --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"login.php"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">'id'</span> <span class="attr">placeholder</span>=<span class="string">"请输入账号"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">'pwd'</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">'登录'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>login.php 代码如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?php</span><br><span class="line">    //拿到传递过来的账号和密码</span><br><span class="line">    $id = $_GET[&apos;id&apos;];</span><br><span class="line">    $pwd = $_GET[&apos;pwd&apos;];</span><br><span class="line">//判断账号是否正确</span><br><span class="line">if($id==&apos;admin&apos; &amp;&amp; $pwd==&apos;123456&apos;):</span><br><span class="line">  ?&gt;</span><br><span class="line">      &lt;!-- 如果正确显示欢迎信息 --&gt;</span><br><span class="line">  	&lt;h3&gt;欢迎登录：&lt;?php echo $id; ?&gt;&lt;/h3&gt;</span><br><span class="line">  &lt;?php else: ?&gt;</span><br><span class="line">   &lt;!-- 如果错误 --&gt;</span><br><span class="line">       &lt;h3&gt;账号或密码错误，请重新登录！&lt;/h3&gt;</span><br><span class="line">  &lt;?php endif; ?&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-3-get请求缺点"><a href="#2-1-3-get请求缺点" class="headerlink" title="2.1.3 get请求缺点"></a>2.1.3 get请求缺点</h4><ul>
+<li>网址有大小限制，而get请求就是通过浏览器发送数据，所以get请求不适合发送图片等大数据</li>
+<li>所有发送的数据都明文显示在网址上，相对不安全，如下图：</li>
+</ul>
+<p><img src="/2018/07/21/表单与服务器交互/../alrxu/1520844955001.png" alt=""></p>
+<h3 id="2-2-post请求"><a href="#2-2-post请求" class="headerlink" title="2.2 post请求"></a>2.2 post请求</h3><p>####2.2.1 post请求介绍</p>
+<ul>
+<li>post请求提交的数据在网址上看不到</li>
+<li>post能更好的提交图片等大数据</li>
+</ul>
+<ul>
+<li>form表单，默认采用的是get请求</li>
+<li>要用post请求，需要设置</li>
+</ul>
+<blockquote>
+<p>给form表单 加method属性，并指定为post，即为post请求</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">'网址'</span> <span class="attr">method</span>=<span class="string">'post'</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-2-用post请求做登录"><a href="#2-2-2-用post请求做登录" class="headerlink" title="2.2.2 用post请求做登录"></a>2.2.2 用post请求做登录</h4><ul>
+<li>界面代码如下</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- post请求 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"login.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">'id'</span> <span class="attr">placeholder</span>=<span class="string">"请输入账号"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">'pwd'</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">'登录'</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>login.php</code>  的代码如果暂时不变，再点登录会报错</li>
+</ul>
+<p><img src="/2018/07/21/表单与服务器交互/../alrxu/1520845815057.png" alt=""></p>
+<ul>
+<li>原因：<ul>
+<li>之前浏览器提交过来的数据是get请求的，所以用<code>$_GET</code>这个超全局变量</li>
+</ul>
+</li>
+<li>用  <code>$_POST</code>  可以拿到post请求提交来的数据</li>
+</ul>
+<p><code>login.php</code>代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?php</span><br><span class="line">    //拿到传递过来的账号和密码</span><br><span class="line">    $id = $_POST[&apos;id&apos;];</span><br><span class="line">    $pwd = $_POST[&apos;pwd&apos;];</span><br><span class="line">//判断账号是否正确</span><br><span class="line">if($id==&apos;admin&apos; &amp;&amp; $pwd==&apos;123456&apos;):</span><br><span class="line">  ?&gt;</span><br><span class="line">      &lt;!-- 如果正确显示欢迎信息 --&gt;</span><br><span class="line">  	&lt;h3&gt;欢迎登录：&lt;?php echo $id; ?&gt;&lt;/h3&gt;</span><br><span class="line">  &lt;?php else: ?&gt;</span><br><span class="line">   &lt;!-- 如果错误 --&gt;</span><br><span class="line">       &lt;h3&gt;账号或密码错误，请重新登录！&lt;/h3&gt;</span><br><span class="line">  &lt;?php endif; ?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-get和post总结"><a href="#2-3-get和post总结" class="headerlink" title="2.3 get和post总结"></a>2.3 get和post总结</h3><h4 id="2-3-1-相同点和不同点"><a href="#2-3-1-相同点和不同点" class="headerlink" title="2.3.1 相同点和不同点"></a>2.3.1 相同点和不同点</h4><blockquote>
+<p>相同点：两种都可以给服务器传递数据，都是通过<code>form</code>元素的<code>method</code>属性指定，默认是get</p>
+<p>不同点：主要是侧重点不同</p>
+<p>​    get请求侧重获取</p>
+<p>​    post请求侧重提交</p>
+</blockquote>
+<p>####2.3.2 使用建议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">以后具体用哪种请求传递数据没有规定，get和post请求都会使用。</span><br><span class="line">		例：</span><br><span class="line">			注册、登录等功能时，用post请求又更好。</span><br><span class="line"></span><br><span class="line">   使用上都是具体看自己的需求来决定是get还是post。总之，如果涉及到密码等敏感信息的，决不能用get，并且，要想清楚自己是为了拿东西（get），还是为了送东西（post）。</span><br><span class="line"></span><br><span class="line">		注：a标签的跳转，也可以理解为是一种get请求。因为get请求本身就是通过网址的跳转来进行的。像我们之前写的英雄列表案例里瞅瞅就是一个a标签，我们通过点击a标签的跳转，发起了get请求去获得结果。</span><br></pre></td></tr></table></figure>
+<h2 id="3-上传文件"><a href="#3-上传文件" class="headerlink" title="3. 上传文件"></a>3. 上传文件</h2><h3 id="3-1-表单元素file"><a href="#3-1-表单元素file" class="headerlink" title="3.1 表单元素file"></a>3.1 表单元素file</h3><ul>
+<li>专门用来做上传的html标签</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-使用post请求提交上传的文件"><a href="#3-2-使用post请求提交上传的文件" class="headerlink" title="3.2 使用post请求提交上传的文件"></a>3.2 使用post请求提交上传的文件</h3><blockquote>
+<p>为什么用post请求</p>
+</blockquote>
+<ul>
+<li>post请求一般是给服务器提交数据，侧重于提交。上传文件就是要给服务器送数据</li>
+<li>get请求有长度限制，不适合传过大文件</li>
+</ul>
+<h3 id="3-3-上传初体验"><a href="#3-3-上传初体验" class="headerlink" title="3.3 上传初体验"></a>3.3 上传初体验</h3><ul>
+<li>界面代码如下：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 表单里仅仅一个文件上传元素，提交到file.php --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"file.php"</span> <span class="attr">method</span>=<span class="string">'post'</span> <span class="attr">enctype</span>=<span class="string">'multipart/form-data'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">'icon'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果要上传文件，必须给form表单添加<code>enctype=&#39;multipart/form-data&#39;</code>属性，否则无效</p>
+</blockquote>
+<h4 id="3-3-1-FILES"><a href="#3-3-1-FILES" class="headerlink" title="3.3.1 $_FILES"></a>3.3.1 $_FILES</h4><ul>
+<li><code>$_POST</code>  此时取不到上传的文件，只能取到文件名。</li>
+<li>要取文件，要用  <code>$_FILES</code></li>
+<li>代码如下：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump($_FILES); <span class="comment">//打印看$_FILES里有什么</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>打印信息如下</li>
+</ul>
+<p><img src="/2018/07/21/表单与服务器交互/../alrxu/1521014270503.png" alt=""></p>
+<blockquote>
+<p>结论： <code>$_FILES</code>  也是一个关联型数组，这个数组下面 icon 对应的value又是一个关联型数组</p>
+<p>几个key对应值的说明：</p>
+<p>​        1.name：保存的是文件名</p>
+<p>​        2.type：保存的是文件类型</p>
+<p>​        3.tmp_name：保存的是客户端上传来的文件临时保存的路径</p>
+<p>​        4.error：错误信息代码</p>
+<p>​        5.size：文件大小</p>
+</blockquote>
+<p>在这个数组中，最需要关注的是<code>tmp_name</code> 这个键里保存的临时目录，客户端上传文件提交到服务器后，是上传到服务器的<strong>临时文件夹</strong>，如果服务器不做任何处理，那么这个上传的文件会很快被系统<strong>自动删掉</strong>。</p>
+<p>因此，如果要正确接收到客户端上传的文件，还必须想办法把这个文件移出临时文件夹！</p>
+<h4 id="3-3-2-文件移动函数"><a href="#3-3-2-文件移动函数" class="headerlink" title="3.3.2 文件移动函数"></a>3.3.2 文件移动函数</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move_uploaded_file(文件原路径、目标路径);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参数1：代表要找到被移动的文件</p>
+<p>参数2：代表把这个文件移动到哪</p>
+<p>如果移动成功，返回值会为true，如果移动失败，返回值会为false</p>
+</blockquote>
+<ul>
+<li>代码如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">         var_dump($_FILES);</span><br><span class="line">		//参数1：移动哪个文件</span><br><span class="line">		//参数2：移动到哪</span><br><span class="line">         $success = move_uploaded_file($_FILES[&apos;icon&apos;][&apos;tmp_name&apos;],&apos;./upload/&apos;.$_FILES[&apos;icon&apos;][&apos;name&apos;]);</span><br><span class="line"></span><br><span class="line">         if($success):</span><br><span class="line">            echo &apos;上传成功！&apos;;</span><br><span class="line">         else:</span><br><span class="line">            echo &apos;上传失败&apos;;</span><br><span class="line">         endif;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-文件操作"><a href="#4-文件操作" class="headerlink" title="4. 文件操作"></a>4. 文件操作</h2><h3 id="4-1-写入文件"><a href="#4-1-写入文件" class="headerlink" title="4.1 写入文件"></a>4.1 写入文件</h3><ul>
+<li>如果需要把一段数据写入到文件，可以用  <code>file_put_contents</code>  函数</li>
+<li>用法：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file_put_contents(要写入的文件路径,文件的内容);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这代表在C盘的123目录写入一个1.txt文件，这个文件的内容是abcd</span></span><br><span class="line">file_put_contents(<span class="string">'c:\123\1.txt'</span>,<span class="string">"abcd"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面用的是绝对路径，也可以用相对路径，例：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//写到当前目录的1.txt文件</span></span><br><span class="line">file_put_contents(<span class="string">'1.txt'</span>,<span class="string">"abcd"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-读取文件内容"><a href="#4-2-读取文件内容" class="headerlink" title="4.2 读取文件内容"></a>4.2 读取文件内容</h3><p>用法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//会把这个文件里的内容读取出来以返回值形式返回。</span></span><br><span class="line">file_get_contents(文件路径);</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代表读取出1.txt中的内容，存到$content变量里</span></span><br><span class="line">$content = file_get_contents(<span class="string">'c:\123\1.txt'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-判断文件是否存在"><a href="#4-3-判断文件是否存在" class="headerlink" title="4.3 判断文件是否存在"></a>4.3 判断文件是否存在</h3><p>用法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果文件存在，则返回true,否则返回false</span></span><br><span class="line">file_exists(文件路径);</span><br></pre></td></tr></table></figure>
+<h2 id="5-注册-amp-登录功能简单体验"><a href="#5-注册-amp-登录功能简单体验" class="headerlink" title="5. 注册&amp;登录功能简单体验"></a>5. 注册&amp;登录功能简单体验</h2><blockquote>
+<p>写一套注册账号、登录账号功能的案例</p>
+</blockquote>
+<h3 id="5-1-注册的实现逻辑"><a href="#5-1-注册的实现逻辑" class="headerlink" title="5.1 注册的实现逻辑"></a>5.1 注册的实现逻辑</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在一个网站注册一个账号，就相当于一个消费在一个商家办一张会员卡一样。</span><br><span class="line"></span><br><span class="line">需要把你的相关资料告诉给商家，例如名字、生日等。</span><br><span class="line"></span><br><span class="line">然后商家把你的这些资料存起来，等用户下次要来店面时可以比对身份再判断让不让你享受会员价。</span><br><span class="line"></span><br><span class="line">因此，注册账号的逻辑是：用户输入想注册的账号和密码，提交给 服务器 ，然后服务器把账号和密码存起来，方便下次验证身份。</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-注册界面和注册功能"><a href="#5-2-注册界面和注册功能" class="headerlink" title="5.2 注册界面和注册功能"></a>5.2 注册界面和注册功能</h3><ul>
+<li>效果如图：</li>
+</ul>
+<p><img src="/2018/07/21/表单与服务器交互/../alrxu/1521083051915.png" alt=""></p>
+<blockquote>
+<p>整个注册界面就只是一张表单，用来让用户填写想注册的账号和密码</p>
+</blockquote>
+<ul>
+<li>新建  <code>register.html</code>  文件，核心代码如下：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"write.php"</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>注册<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span>请输入账号：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span>请输入密码：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"pwd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>用户点击注册后，会把账号密码发送到  <code>write.php</code>  这个文件。</li>
+<li>新建  <code>write.php</code>  文件，用来处理用户注册的信息</li>
+<li>代码如下：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取传递过来的账号和密码</span></span><br><span class="line">$id = $_POST[<span class="string">'id'</span>];</span><br><span class="line">$pwd = $_POST[<span class="string">'pwd'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//把账号当文件名写入到data目录里，把密码当文件的内容</span></span><br><span class="line">file_put_contents(<span class="string">'./data/'</span>.$id.<span class="string">'.txt'</span>,$pwd);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;h2&gt;注册成功！&lt;/h2&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;a href="login.html"&gt;点我去登录&lt;/a&gt;'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="5-3-登录的逻辑"><a href="#5-3-登录的逻辑" class="headerlink" title="5.3 登录的逻辑"></a>5.3 登录的逻辑</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">登录就好比用户来商家消费了，先给商家报名字和密码，然后商家查询自己的小本子里看有没有这个记录，有的话，就让他进入消费。</span><br><span class="line"></span><br><span class="line">因此，登录的逻辑是：用户输入之前注册好的账号和密码提交给服务器,然后服务器再查询自己记录的数据里，有没有这条数据，如果有，登录成功，如果没有，登录失败。</span><br></pre></td></tr></table></figure>
+<h3 id="5-4-登录界面和登录功能"><a href="#5-4-登录界面和登录功能" class="headerlink" title="5.4 登录界面和登录功能"></a>5.4 登录界面和登录功能</h3><ul>
+<li>新建  <code>login.html</code>  文件，用来让用户登录。代码如下：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"read.php"</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span>请输入账号：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span>请输入密码：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"pwd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"登录"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>当点击登录后，会把数据提交到  <code>read.php</code>  文件。</li>
+<li>新建  <code>read.php</code>  文件，代码如下</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> 	<span class="comment">//获取用户输入的账号和密码</span></span><br><span class="line">     $id = $_POST[<span class="string">'id'</span>];</span><br><span class="line">     $pwd = $_POST[<span class="string">'pwd'</span>];</span><br><span class="line">  <span class="comment">//判断文件是否存在</span></span><br><span class="line">     $res = file_exists(<span class="string">'./data/'</span>.$id.<span class="string">'.txt'</span>);</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span>($res):</span><br><span class="line"><span class="comment">//如果有这个文件，证明包含这个账号，取出文件里的内容</span></span><br><span class="line">       $filePWD = file_get_contents(<span class="string">'./data/'</span>.$id.<span class="string">'.txt'</span>);</span><br><span class="line">       <span class="comment">//跟用户输入的密码进行比对，如果相等证明登录成功</span></span><br><span class="line">       <span class="keyword">if</span>($filePWD == $pwd):</span><br><span class="line">         <span class="keyword">echo</span> <span class="string">'登录成功!'</span>;</span><br><span class="line">       <span class="keyword">else</span>:</span><br><span class="line">         <span class="keyword">echo</span> <span class="string">'密码错误'</span>;</span><br><span class="line">       <span class="keyword">endif</span>;</span><br><span class="line"> <span class="comment">//如果文件名不存在，代表没有这个账号</span></span><br><span class="line">     <span class="keyword">else</span>:</span><br><span class="line">         <span class="keyword">echo</span> <span class="string">'账号不存在'</span>;</span><br><span class="line">     <span class="keyword">endif</span>;</span><br><span class="line"> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-网络基础知识"><a href="#6-网络基础知识" class="headerlink" title="6.网络基础知识"></a>6.网络基础知识</h2><h3 id="6-1-REQUEST"><a href="#6-1-REQUEST" class="headerlink" title="6.1 $_REQUEST"></a>6.1 $_REQUEST</h3><ul>
+<li>这也是一个超全局变量</li>
+<li>无论是用  <code>get</code>  还是  <code>post</code>  提交过来的数据，都可以用  <code>$_REQUEST</code>  拿到</li>
+<li>用法</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_REQUEST[<span class="string">'name'</span>];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_REQUEST[<span class="string">'id'</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-网络基础知识"><a href="#6-2-网络基础知识" class="headerlink" title="6.2 网络基础知识"></a>6.2 网络基础知识</h3><h4 id="6-2-1-IP-地址"><a href="#6-2-1-IP-地址" class="headerlink" title="6.2.1 IP 地址"></a>6.2.1 IP 地址</h4><blockquote>
+<p>Internet Protocol Address</p>
+</blockquote>
+<ul>
+<li>设备（计算机、手机等）在网络中的地址，要想精准的从网络上连接某台设备，靠的就是IP地址。</li>
+<li>目前最常见的格式（IPV4）：<code>[0-255].[0-255].[0-255].[0-255]</code> 即为四组 0-255 数字组成的组合。 例：119.75.213.61</li>
+<li>访问网页本质上也是通过IP地址访问的。例：访问百度可以直接输入  <code>119.75.213.61</code>  访问</li>
+<li>特殊IP：127.0.0.1  是本地地址。</li>
+</ul>
+<h4 id="6-2-2-域名"><a href="#6-2-2-域名" class="headerlink" title="6.2.2 域名"></a>6.2.2 域名</h4><ul>
+<li>因为IP地址是一堆无规律的数字，不方便记忆，因此，计算机中出现了域名这样的东西。相当于给IP地址起一个别名。</li>
+<li>例：119.75.213.61 的别名（域名）是  <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></li>
+</ul>
+<h4 id="6-2-3-DNS"><a href="#6-2-3-DNS" class="headerlink" title="6.2.3 DNS"></a>6.2.3 DNS</h4><blockquote>
+<p>网络中只有靠IP地址才能找到另一台计算机。那么我们怎么又能通过域名找到计算机了呢？</p>
+</blockquote>
+<ul>
+<li>在通过域名访问到网站之前会先经过<strong>DNS服务器</strong></li>
+</ul>
+<ul>
+<li>DNS服务器：负责把域名解析成IP地址，然后再访问这个IP对应的网站</li>
+<li>如图：</li>
+</ul>
+<p><img src="/2018/07/21/表单与服务器交互/../alrxu/1524900233102.png" alt=""></p>
+<blockquote>
+<p>所以有的时候，电脑能上QQ，不能打开网页，那可能是DNS服务器出问题了</p>
+<p>因为QQ是通过IP直连不经过DNS服务器，而网页是输入域名的，要先找到DNS服务器解析。</p>
+<p>DNS服务器不用自行设置，网络服务提供商会自动给指派。</p>
+</blockquote>
+<h4 id="6-2-4-端口"><a href="#6-2-4-端口" class="headerlink" title="6.2.4 端口"></a>6.2.4 端口</h4><ul>
+<li>服务器可以理解为一台封闭的大厦，端口相当于这个大厦开的门</li>
+<li>可以指定0-65535之间的任意一个数字作为端口，每一个端口对应服务器中的一个门，通过门可以访问到门后的服务</li>
+<li>网站端口默认是80</li>
+</ul>
+<h4 id="6-2-5-host文件"><a href="#6-2-5-host文件" class="headerlink" title="6.2.5 host文件"></a>6.2.5 host文件</h4><ul>
+<li>本地的域名 -&gt; IP的对应文件，这个文件可以自行指定某个域名与IP的对应。</li>
+<li>文件内容</li>
+</ul>
+<p><img src="/2018/07/21/表单与服务器交互/../alrxu/1524902586372.png" alt=""></p>
+<ul>
+<li>DNS解析顺序<ul>
+<li>先找到本机的host文件，看host文件里是否记录有这个域名对应的IP，如果有，就直接通过host记录的ip地址去访问</li>
+<li>如果host文件里没有记录，再去DNS服务器解析域名</li>
+</ul>
+</li>
+<li>如图：</li>
+</ul>
+<p><img src="/2018/07/21/表单与服务器交互/../alrxu/1524902420673.png" alt=""></p>
+<ul>
+<li>host文件位置<ul>
+<li>windows：  <code>C:\Windows\System32\drivers\etc\hosts</code></li>
+<li>mac：  <code>/etc/hosts</code></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/07/21/表单与服务器交互/" data-id="cjn9v9vyh000mv86xcg6bev96" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/08/01/MySQL数据库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          PHP、MySQL操作数据库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/07/18/服务器、PHP语法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">服务器环境以及PHP基础语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#表单与服务器交互"><span class="toc-number">1.</span> <span class="toc-text">表单与服务器交互</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-表单与服务器交互初体验"><span class="toc-number">1.1.</span> <span class="toc-text">1. 表单与服务器交互初体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-表单介绍"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 表单介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-表单语法"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 表单语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-action属性"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 action属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-服务端拿到表单提交的数据"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 服务端拿到表单提交的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-超全局变量"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">1.4.1 超全局变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-GET变量"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">1.4.2 $_GET变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-图解"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">1.4.3 图解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-4-判断数据是否存在"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">1.4.4 判断数据是否存在</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-4-1-写了不存在的key会报错"><span class="toc-number">1.1.4.4.1.</span> <span class="toc-text">1.4.4.1 写了不存在的key会报错</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-4-2-isset使用"><span class="toc-number">1.1.4.4.2.</span> <span class="toc-text">1.4.4.2 isset使用</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-get请求和post请求"><span class="toc-number">1.2.</span> <span class="toc-text">2.get请求和post请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-get请求"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 get请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-get请求介绍"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2.1.1 get请求介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-用get请求做登录"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.1.2 用get请求做登录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-get请求缺点"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">2.1.3 get请求缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-post请求"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 post请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-用post请求做登录"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">2.2.2 用post请求做登录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-get和post总结"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 get和post总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-相同点和不同点"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">2.3.1 相同点和不同点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-上传文件"><span class="toc-number">1.3.</span> <span class="toc-text">3. 上传文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-表单元素file"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 表单元素file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-使用post请求提交上传的文件"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 使用post请求提交上传的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-上传初体验"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 上传初体验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-FILES"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">3.3.1 $_FILES</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-文件移动函数"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">3.3.2 文件移动函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-文件操作"><span class="toc-number">1.4.</span> <span class="toc-text">4. 文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-写入文件"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 写入文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-读取文件内容"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 读取文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-判断文件是否存在"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 判断文件是否存在</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-注册-amp-登录功能简单体验"><span class="toc-number">1.5.</span> <span class="toc-text">5. 注册&amp;登录功能简单体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-注册的实现逻辑"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 注册的实现逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-注册界面和注册功能"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 注册界面和注册功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-登录的逻辑"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 登录的逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-登录界面和登录功能"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 登录界面和登录功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-网络基础知识"><span class="toc-number">1.6.</span> <span class="toc-text">6.网络基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-REQUEST"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 $_REQUEST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-网络基础知识"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 网络基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1-IP-地址"><span class="toc-number">1.6.2.1.</span> <span class="toc-text">6.2.1 IP 地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-2-域名"><span class="toc-number">1.6.2.2.</span> <span class="toc-text">6.2.2 域名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-3-DNS"><span class="toc-number">1.6.2.3.</span> <span class="toc-text">6.2.3 DNS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-4-端口"><span class="toc-number">1.6.2.4.</span> <span class="toc-text">6.2.4 端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-5-host文件"><span class="toc-number">1.6.2.5.</span> <span class="toc-text">6.2.5 host文件</span></a></li></ol></li></ol></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

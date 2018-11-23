@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>nodejs URL模块操作URL的parse方法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="nodejs URL模块操作URL的parse方法123456789101112131415161718192021222324252627282930//(1) 导入http模块,url模块//(2) 创建服务器//(3)在request请求处理函数中    // 1. 获取到地址栏的url    // 2. 获取到URL对象且URL对象中的query属性是对象    // 3. 取出URL对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs URL模块操作URL的parse方法">
+<meta property="og:url" content="https://Alrxu.github.io/2018/09/18/nodejs URL模块操作URL相关方法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="nodejs URL模块操作URL的parse方法123456789101112131415161718192021222324252627282930//(1) 导入http模块,url模块//(2) 创建服务器//(3)在request请求处理函数中    // 1. 获取到地址栏的url    // 2. 获取到URL对象且URL对象中的query属性是对象    // 3. 取出URL对象">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-20T04:58:59.473Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs URL模块操作URL的parse方法">
+<meta name="twitter:description" content="nodejs URL模块操作URL的parse方法123456789101112131415161718192021222324252627282930//(1) 导入http模块,url模块//(2) 创建服务器//(3)在request请求处理函数中    // 1. 获取到地址栏的url    // 2. 获取到URL对象且URL对象中的query属性是对象    // 3. 取出URL对象">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nodejs URL模块操作URL相关方法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/09/18/nodejs URL模块操作URL相关方法/" class="article-date">
+  <time datetime="2018-09-18T05:03:18.537Z" itemprop="datePublished">2018-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nodejs URL模块操作URL的parse方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="nodejs-URL模块操作URL的parse方法"><a href="#nodejs-URL模块操作URL的parse方法" class="headerlink" title="nodejs URL模块操作URL的parse方法"></a>nodejs URL模块操作URL的parse方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//(1) 导入http模块,url模块</span></span><br><span class="line"><span class="comment">//(2) 创建服务器</span></span><br><span class="line"><span class="comment">//(3)在request请求处理函数中</span></span><br><span class="line">    <span class="comment">// 1. 获取到地址栏的url</span></span><br><span class="line">    <span class="comment">// 2. 获取到URL对象且URL对象中的query属性是对象</span></span><br><span class="line">    <span class="comment">// 3. 取出URL对象中的query属性就参数的js对象形式</span></span><br><span class="line"><span class="comment">//(4) 绑定端口号和ip地址,开启服务器</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer();</span><br><span class="line">server.on(<span class="string">'request'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="comment">// 1.  req.url 获取到的是端口号之后的字符串</span></span><br><span class="line">    <span class="built_in">console</span>.log(req.url);</span><br><span class="line">    <span class="comment">// 2.  url.parse(req.url,true) 将获取到的字符串(req.url)转换成URL对象,且URL对象中的query属性也是对象</span></span><br><span class="line">    <span class="built_in">console</span>.log(url.parse(req.url,<span class="literal">true</span>));</span><br><span class="line">    <span class="comment">// 3. url.parse(req.url,true).query  取出URL对象中的query属性就参数的js对象形式</span></span><br><span class="line">    <span class="built_in">console</span>.log(url.parse(urlStr,<span class="literal">true</span>).query);</span><br><span class="line">    <span class="comment">//  因为响应数据必须只能是字符串或者二进制,所以用JSON.stringify转换为字符串作为响应数据</span></span><br><span class="line">    res.end(<span class="built_in">JSON</span>.stringify(url.parse(urlStr,<span class="literal">true</span>).query));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8090</span>,<span class="string">'127.0.0.1'</span>,err=&gt;&#123;</span><br><span class="line">   <span class="keyword">if</span>(err)&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(err);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'启动成功!!!'</span>);</span><br><span class="line">   </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="url-parse方法总结"><a href="#url-parse方法总结" class="headerlink" title="url.parse方法总结"></a>url.parse方法总结</h4><p>url.parse(urlString[, parseQueryString[, slashesDenoteHost]])</p>
+<blockquote>
+<p>urlString: 获取的url字符串<br>parseQueryString: 布尔类型</p>
+<p>false: 默认; 返回的是URL对象,且URL对象中的query属性是未解析的字符串<br>true: 返回的是URL对象,且URL对象中的query属性也是对象</p>
+<p>slashesDenoteHost:布尔类型</p>
+<p>false: 默认;<br>true: 能够解析不带协议的url请求</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/09/18/nodejs URL模块操作URL相关方法/" data-id="cjn9v9vwv000bv86x1l4cl603" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/10/04/使用第三方模块/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          使用第三方模板相关知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/09/04/css3背景设置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">css3背景设置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs-URL模块操作URL的parse方法"><span class="toc-number">1.</span> <span class="toc-text">nodejs URL模块操作URL的parse方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#url-parse方法总结"><span class="toc-number">1.0.1.</span> <span class="toc-text">url.parse方法总结</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

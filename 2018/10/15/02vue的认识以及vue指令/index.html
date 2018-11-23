@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Vue指令以及过滤器 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vue.js什么是Vue.js Vue.js 是目前最火的一个前端框架，React是最流行的一个前端框架（React除了开发网站，还可以开发手机App， Vue语法也是可以用于进行手机App开发的，需要借助于Weex）  Vue.js 是前端的主流框架之一，和Angular.js、React.js 一起，并成为前端三大主流框架！  Vue.js 是一套构建用户界面的框架，只关注视图层，它不仅易于上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue指令以及过滤器">
+<meta property="og:url" content="https://Alrxu.github.io/2018/10/15/02vue的认识以及vue指令/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Vue.js什么是Vue.js Vue.js 是目前最火的一个前端框架，React是最流行的一个前端框架（React除了开发网站，还可以开发手机App， Vue语法也是可以用于进行手机App开发的，需要借助于Weex）  Vue.js 是前端的主流框架之一，和Angular.js、React.js 一起，并成为前端三大主流框架！  Vue.js 是一套构建用户界面的框架，只关注视图层，它不仅易于上">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-15T05:42:04.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue指令以及过滤器">
+<meta name="twitter:description" content="Vue.js什么是Vue.js Vue.js 是目前最火的一个前端框架，React是最流行的一个前端框架（React除了开发网站，还可以开发手机App， Vue语法也是可以用于进行手机App开发的，需要借助于Weex）  Vue.js 是前端的主流框架之一，和Angular.js、React.js 一起，并成为前端三大主流框架！  Vue.js 是一套构建用户界面的框架，只关注视图层，它不仅易于上">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-02vue的认识以及vue指令" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/10/15/02vue的认识以及vue指令/" class="article-date">
+  <time datetime="2018-10-15T05:41:48.976Z" itemprop="datePublished">2018-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue指令以及过滤器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h1><h3 id="什么是Vue-js"><a href="#什么是Vue-js" class="headerlink" title="什么是Vue.js"></a>什么是Vue.js</h3><ul>
+<li><p>Vue.js 是目前最火的一个前端框架，React是最流行的一个前端框架（React除了开发网站，还可以开发手机App， Vue语法也是可以用于进行手机App开发的，需要借助于Weex）</p>
+</li>
+<li><p>Vue.js 是前端的<strong>主流框架之一</strong>，和Angular.js、React.js 一起，并成为前端三大主流框架！</p>
+</li>
+<li><p>Vue.js 是一套构建用户界面的框架，<strong>只关注视图层</strong>，它不仅易于上手，还便于与第三方库或既有项目整合。（Vue有配套的第三方类库，可以整合起来做大型项目的开发）</p>
+</li>
+<li><p>前端的主要工作？主要负责MVC中的V这一层；主要工作就是和界面打交道，来制作前端页面效果；</p>
+</li>
+</ul>
+<h2 id="为什么要学习流行框架"><a href="#为什么要学习流行框架" class="headerlink" title="为什么要学习流行框架"></a>为什么要学习流行框架</h2><ul>
+<li>企业为了提高开发效率：在企业中，时间就是效率，效率就是金钱；<ul>
+<li>企业中，使用框架，能够提高开发的效率；</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>提高开发效率的发展历程：原生JS -&gt; Jquery之类的类库 -&gt; 前端模板引擎 -&gt; Angular.js / Vue.js（能够帮助我们减少不必要的DOM操作；提高渲染效率；双向数据绑定的概念【通过框架提供的指令，我们前端程序员只需要关心数据的业务逻辑，不再关心DOM是如何渲染的了】）</li>
+<li>在Vue中，一个核心的概念，就是让用户不再操作DOM元素，解放了用户的双手，让程序员可以更多的时间去关注业务逻辑；</li>
+</ul>
+<h2 id="框架和库的区别"><a href="#框架和库的区别" class="headerlink" title="框架和库的区别"></a>框架和库的区别</h2><ul>
+<li><p>框架：是一套完整的解决方案；对项目的侵入性较大，项目如果需要更换框架，则需要重新架构整个项目。</p>
+<ul>
+<li>node 中的 express；</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>库（插件）：提供某一个小功能，对项目的侵入性较小，如果某个库无法完成某些需求，可以很容易切换到其它库实现需求。<ul>
+<li><ol>
+<li>从Jquery 切换到 Zepto</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>从 EJS 切换到 art-template</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Vue指令之v-bind的三种用法"><a href="#Vue指令之v-bind的三种用法" class="headerlink" title="Vue指令之v-bind的三种用法"></a>Vue指令之<code>v-bind</code>的三种用法</h2><ol>
+<li><p>直接使用指令<code>v-bind</code></p>
+</li>
+<li><p>使用简化指令<code>:</code></p>
+</li>
+<li><p>在绑定的时候，拼接绑定内容：<code>:title=&quot;btnTitle + &#39;, 这是追加的内容&#39;&quot;</code></p>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>绑定属性的指令,v-bind绑定的属性的属性值当成变量来使用,属性值中也可以写合法的js表达式</li>
+<li>v-bind只能实现数据的单向绑定,从数据=&gt;视图 即修改模型,视图就会跟着改变</li>
+<li>v-bind绑定class,值为一个对象 可以实现动态的切换类</li>
+</ul>
+</blockquote>
+<p>​                例: &lt;p :class=”{active: flag}”   在模型中可以通过修改flag为true或false来决定active这个类的存在</p>
+<h2 id="Vue指令之-v-on以及按键修饰符"><a href="#Vue指令之-v-on以及按键修饰符" class="headerlink" title="Vue指令之`v-on以及按键修饰符"></a>Vue指令之`v-on以及按键修饰符</h2><ul>
+<li>如果没有参数,调用的时候可以省略()<ul>
+<li>无参: v-on: 事件类型 = “函数名”</li>
+</ul>
+</li>
+<li>如果有参数,调用的时候就必须带()并且传实参<ul>
+<li>带参: v-on: 事件类型 = “函数名(实参)”</li>
+</ul>
+</li>
+<li>v-on的按键修饰符</li>
+</ul>
+<blockquote>
+<p> 例如: <button @keyup.13="doThis"></button></p>
+<p> 表示只有在keycode是13的时候才会调用doThis函数</p>
+<p> 为了方便,可使用按键别名</p>
+<p> .enter   .tab  .delete  .esc   .space  .up  .down  .left  .right</p>
+</blockquote>
+<h3 id="事件修饰符："><a href="#事件修饰符：" class="headerlink" title="事件修饰符："></a>事件修饰符：</h3><ul>
+<li><p>.stop       阻止冒泡</p>
+</li>
+<li><p>.prevent    阻止默认事件</p>
+</li>
+<li><p>.capture    添加事件侦听器时使用事件捕获模式</p>
+</li>
+<li><p>.self       只当事件在该元素本身（比如不是子元素）触发时触发回调</p>
+</li>
+<li><p>.once       事件只触发一次</p>
+</li>
+</ul>
+<h2 id="在Vue中使用样式"><a href="#在Vue中使用样式" class="headerlink" title="在Vue中使用样式"></a>在Vue中使用样式</h2><h3 id="使用class样式"><a href="#使用class样式" class="headerlink" title="使用class样式"></a>使用class样式</h3><ol>
+<li><p>数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 :class=&quot;[&apos;red&apos;, &apos;thin&apos;]&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组中使用三元表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 :class=&quot;[&apos;red&apos;, &apos;thin&apos;, isactive?&apos;active&apos;:&apos;&apos;]&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组中嵌套对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 :class=&quot;[&apos;red&apos;, &apos;thin&apos;, &#123;&apos;active&apos;: isactive&#125;]&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接使用对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 :class=&quot;&#123;red:true, italic:true, active:true, thin:true&#125;&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="使用内联样式"><a href="#使用内联样式" class="headerlink" title="使用内联样式"></a>使用内联样式</h3><ol>
+<li><p>直接在元素上通过 <code>:style</code> 的形式，书写样式对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 :style=&quot;&#123;color: &apos;red&apos;, &apos;font-size&apos;: &apos;40px&apos;&#125;&quot;&gt;这是一个善良的H1&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将样式对象，定义到 <code>data</code> 中，并直接引用到 <code>:style</code> 中</p>
+<ul>
+<li><p>在data上定义样式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">        h1StyleObj: &#123; color: &apos;red&apos;, &apos;font-size&apos;: &apos;40px&apos;, &apos;font-weight&apos;: &apos;200&apos; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在元素中，通过属性绑定的形式，将样式对象应用到元素中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 :style=&quot;h1StyleObj&quot;&gt;这是一个善良的H1&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在 <code>:style</code> 中通过数组，引用多个 <code>data</code> 上的样式对象</p>
+<ul>
+<li><p>在data上定义样式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">        h1StyleObj: &#123; color: &apos;red&apos;, &apos;font-size&apos;: &apos;40px&apos;, &apos;font-weight&apos;: &apos;200&apos; &#125;,</span><br><span class="line">        h1StyleObj2: &#123; fontStyle: &apos;italic&apos; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在元素中，通过属性绑定的形式，将样式对象应用到元素中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 :style=&quot;[h1StyleObj, h1StyleObj2]&quot;&gt;这是一个善良的H1&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Vue指令之v-for和key属性"><a href="#Vue指令之v-for和key属性" class="headerlink" title="Vue指令之v-for和key属性"></a>Vue指令之<code>v-for</code>和<code>key</code>属性</h2><ol>
+<li>迭代数组</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-for=&quot;(item, i) in list&quot;&gt;索引：&#123;&#123;i&#125;&#125; --- 姓名：&#123;&#123;item.name&#125;&#125; --- 年龄：&#123;&#123;item.age&#125;&#125;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>迭代对象中的属性</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- 循环遍历对象身上的属性 --&gt;</span><br><span class="line"></span><br><span class="line">   &lt;div v-for=&quot;(val, key, i) in userInfo&quot;&gt;&#123;&#123;val&#125;&#125; --- &#123;&#123;key&#125;&#125; --- &#123;&#123;i&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>迭代数字</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;p v-for=&quot;i in 10&quot;&gt;这是第 &#123;&#123;i&#125;&#125; 个P标签&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.2.0+ 的版本里，<strong>当在组件中使用</strong> v-for 时，key 现在是必须的。</p>
+</blockquote>
+<p>当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用 “<strong>就地复用</strong>” 策略。如果数据项的顺序被改变，Vue将<strong>不是移动 DOM 元素来匹配数据项的顺序</strong>， 而是<strong>简单复用此处每个元素</strong>，并且确保它在特定索引下显示已被渲染过的每个元素。</p>
+<p>为了给 Vue 一个提示，<strong>以便它能跟踪每个节点的身份，从而重用和重新排序现有元素</strong>，你需要为每项提供一个唯一 key 属性。</p>
+<h2 id="Vue指令之v-if和v-show"><a href="#Vue指令之v-if和v-show" class="headerlink" title="Vue指令之v-if和v-show"></a>Vue指令之<code>v-if</code>和<code>v-show</code></h2><ul>
+<li>v-if:   每次都会重新删除或者创建元素,有较高的切换性能消耗;<ul>
+<li>如果元素切换频繁,就使用v-for</li>
+</ul>
+</li>
+<li>v-show : 不管是true或false,都会创建元素,有较高的初始渲染消耗<ul>
+<li>rue则display: hidden;false则displa:none </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>一般来说，v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗。因此，如果需要频繁切换 v-show 较好，如果在运行时条件不大可能改变 v-if 较好。</p>
+</blockquote>
+<h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><p>概念：Vue.js 允许你自定义过滤器，<strong>可被用作一些常见的文本格式化</strong>。过滤器可以用在两个地方：<strong>mustache 插值和 v-bind 表达式</strong>。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符指示；</p>
+<h3 id="私有过滤器"><a href="#私有过滤器" class="headerlink" title="私有过滤器"></a>私有过滤器</h3><ol>
+<li>HTML元素：</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;td&gt;&#123;&#123;item.ctime | dataFormat('yyyy-mm-dd')&#125;&#125;&lt;/td&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>私有 <code>filters</code> 定义方式：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">filters: &#123; <span class="comment">// 私有局部过滤器，只能在 当前 VM 对象所控制的 View 区域进行使用</span></span><br><span class="line"></span><br><span class="line">    dataFormat(input, pattern = <span class="string">""</span>) &#123; <span class="comment">// 在参数列表中 通过 pattern="" 来指定形参默认值，防止报错</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> dt = <span class="keyword">new</span> Date(input);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 获取年月日</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> y = dt.getFullYear();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> m = (dt.getMonth() + <span class="number">1</span>).toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> d = dt.getDate().toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 如果 传递进来的字符串类型，转为小写之后，等于 yyyy-mm-dd，那么就返回 年-月-日</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 否则，就返回  年-月-日 时：分：秒</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (pattern.toLowerCase() === <span class="string">'yyyy-mm-dd'</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> `$&#123;y&#125;-$&#123;m&#125;-$&#123;d&#125;`;</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取时分秒</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> hh = dt.getHours().toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> mm = dt.getMinutes().toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> ss = dt.getSeconds().toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> `$&#123;y&#125;-$&#123;m&#125;-$&#123;d&#125; $&#123;hh&#125;:$&#123;mm&#125;:$&#123;ss&#125;`;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用ES6中的字符串新方法 String.prototype.padStart(maxLength, fillString=’’) 或 String.prototype.padEnd(maxLength, fillString=’’)来填充字符串；</p>
+</blockquote>
+<h3 id="全局过滤器"><a href="#全局过滤器" class="headerlink" title="全局过滤器"></a>全局过滤器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个全局过滤器</span></span><br><span class="line"></span><br><span class="line">Vue.filter(<span class="string">'dataFormat'</span>, function (input, pattern = <span class="string">''</span>) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> dt = <span class="keyword">new</span> Date(input);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取年月日</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> y = dt.getFullYear();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> m = (dt.getMonth() + <span class="number">1</span>).toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> d = dt.getDate().toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果 传递进来的字符串类型，转为小写之后，等于 yyyy-mm-dd，那么就返回 年-月-日</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 否则，就返回  年-月-日 时：分：秒</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (pattern.toLowerCase() === <span class="string">'yyyy-mm-dd'</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> `$&#123;y&#125;-$&#123;m&#125;-$&#123;d&#125;`;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取时分秒</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> hh = dt.getHours().toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> mm = dt.getMinutes().toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> ss = dt.getSeconds().toString().padStart(<span class="number">2</span>, <span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> `$&#123;y&#125;-$&#123;m&#125;-$&#123;d&#125; $&#123;hh&#125;:$&#123;mm&#125;:$&#123;ss&#125;`;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：当有局部和全局两个名称相同的过滤器时候，会以就近原则进行调用，即：局部过滤器优先于全局过滤器被调用！</p>
+</blockquote>
+<h2 id="键盘修饰符以及自定义键盘修饰符"><a href="#键盘修饰符以及自定义键盘修饰符" class="headerlink" title="键盘修饰符以及自定义键盘修饰符"></a>键盘修饰符以及自定义键盘修饰符</h2><h3 id="1-x中自定义键盘修饰符"><a href="#1-x中自定义键盘修饰符" class="headerlink" title="1.x中自定义键盘修饰符"></a>1.x中自定义键盘修饰符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Vue.directive(&apos;on&apos;).keyCodes.f2 = 113;</span><br></pre></td></tr></table></figure>
+<h3 id="2-x中自定义键盘修饰符"><a href="#2-x中自定义键盘修饰符" class="headerlink" title="2.x中自定义键盘修饰符"></a>2.x中自定义键盘修饰符</h3><ol>
+<li>通过<code>Vue.config.keyCodes.名称 = 按键值</code>来自定义案件修饰符的别名：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Vue.config.keyCodes.f2 = 113;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用自定义的按键修饰符：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;name&quot; @keyup.f2=&quot;add&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><ol>
+<li>自定义全局和局部的 自定义指令：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义全局指令 v-focus，为绑定的元素自动获取焦点：</span></span><br><span class="line"></span><br><span class="line">   Vue.directive(<span class="string">'focus'</span>, &#123;</span><br><span class="line"></span><br><span class="line">     inserted: function (el) &#123; <span class="comment">// inserted 表示被绑定元素插入父节点时调用</span></span><br><span class="line"></span><br><span class="line">       el.focus();</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 自定义局部指令 v-color 和 v-font-weight，为绑定的元素设置指定的字体颜色 和 字体粗细：</span></span><br><span class="line"></span><br><span class="line">     directives: &#123;</span><br><span class="line"></span><br><span class="line">       color: &#123; <span class="comment">// 为元素设置指定的字体颜色</span></span><br><span class="line"></span><br><span class="line">         bind(el, binding) &#123;</span><br><span class="line"></span><br><span class="line">           el.style.color = binding.value;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">       &#125;,</span><br><span class="line"></span><br><span class="line">       <span class="string">'font-weight'</span>: function (el, binding2) &#123; <span class="comment">// 自定义指令的简写形式，等同于定义了 bind 和 update 两个钩子函数</span></span><br><span class="line"></span><br><span class="line">         el.style.fontWeight = binding2.value;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>自定义指令的使用方式：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;searchName&quot; v-focus v-color=&quot;&apos;red&apos;&quot; v-font-weight=&quot;900&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ol>
+<li><a href="https://v1-cn.vuejs.org/" target="_blank" rel="noopener">vue.js 1.x 文档</a></li>
+<li><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">vue.js 2.x 文档</a></li>
+<li><a href="http://www.css88.com/archives/7715" target="_blank" rel="noopener">String.prototype.padStart(maxLength, fillString)</a></li>
+<li><a href="http://www.cnblogs.com/wuhua1/p/6686237.html" target="_blank" rel="noopener">js 里面的键盘事件对应的键码</a></li>
+<li><a href="http://www.cnblogs.com/kidney/p/6052935.html" target="_blank" rel="noopener">Vue.js双向绑定的实现原理</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/10/15/02vue的认识以及vue指令/" data-id="cjncqs9bj0002aw6x38hmmk7m" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/10/17/03vue中的动画/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Vue中的动画
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/10/15/01后端的MVC和前端的MVVM/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">前端的MVVM和后端的MVC</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue-js"><span class="toc-number">1.</span> <span class="toc-text">Vue.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是Vue-js"><span class="toc-number">1.0.1.</span> <span class="toc-text">什么是Vue.js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要学习流行框架"><span class="toc-number">1.1.</span> <span class="toc-text">为什么要学习流行框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架和库的区别"><span class="toc-number">1.2.</span> <span class="toc-text">框架和库的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue指令之v-bind的三种用法"><span class="toc-number">1.3.</span> <span class="toc-text">Vue指令之v-bind的三种用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue指令之-v-on以及按键修饰符"><span class="toc-number">1.4.</span> <span class="toc-text">Vue指令之`v-on以及按键修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件修饰符："><span class="toc-number">1.4.1.</span> <span class="toc-text">事件修饰符：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在Vue中使用样式"><span class="toc-number">1.5.</span> <span class="toc-text">在Vue中使用样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用class样式"><span class="toc-number">1.5.1.</span> <span class="toc-text">使用class样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用内联样式"><span class="toc-number">1.5.2.</span> <span class="toc-text">使用内联样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue指令之v-for和key属性"><span class="toc-number">1.6.</span> <span class="toc-text">Vue指令之v-for和key属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue指令之v-if和v-show"><span class="toc-number">1.7.</span> <span class="toc-text">Vue指令之v-if和v-show</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤器"><span class="toc-number">1.8.</span> <span class="toc-text">过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#私有过滤器"><span class="toc-number">1.8.1.</span> <span class="toc-text">私有过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局过滤器"><span class="toc-number">1.8.2.</span> <span class="toc-text">全局过滤器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#键盘修饰符以及自定义键盘修饰符"><span class="toc-number">1.9.</span> <span class="toc-text">键盘修饰符以及自定义键盘修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-x中自定义键盘修饰符"><span class="toc-number">1.9.1.</span> <span class="toc-text">1.x中自定义键盘修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-x中自定义键盘修饰符"><span class="toc-number">1.9.2.</span> <span class="toc-text">2.x中自定义键盘修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义指令"><span class="toc-number">1.9.3.</span> <span class="toc-text">自定义指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关文章"><span class="toc-number">1.10.</span> <span class="toc-text">相关文章</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

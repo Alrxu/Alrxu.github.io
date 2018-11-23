@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>使用multiparty上传文件,并重命名上传的文件 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用multiparty上传文件,并重命名上传的文件 需要将文件上传的页面显示到浏览器上   url请求uploadPage页面if(req.url.includes(uploadPage)) 操作: 读取uploadPage.html的文件内容,响应会浏览器   点击提交请求form action提交页面postUpload    else if (req.url.includes(postUp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用multiparty上传文件,并重命名上传的文件">
+<meta property="og:url" content="https://Alrxu.github.io/2018/10/06/使用multiparty上传文件/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="使用multiparty上传文件,并重命名上传的文件 需要将文件上传的页面显示到浏览器上   url请求uploadPage页面if(req.url.includes(uploadPage)) 操作: 读取uploadPage.html的文件内容,响应会浏览器   点击提交请求form action提交页面postUpload    else if (req.url.includes(postUp">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-04T05:11:33.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用multiparty上传文件,并重命名上传的文件">
+<meta name="twitter:description" content="使用multiparty上传文件,并重命名上传的文件 需要将文件上传的页面显示到浏览器上   url请求uploadPage页面if(req.url.includes(uploadPage)) 操作: 读取uploadPage.html的文件内容,响应会浏览器   点击提交请求form action提交页面postUpload    else if (req.url.includes(postUp">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-使用multiparty上传文件" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/10/06/使用multiparty上传文件/" class="article-date">
+  <time datetime="2018-10-06T05:20:55.639Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用multiparty上传文件,并重命名上传的文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="使用multiparty上传文件-并重命名上传的文件"><a href="#使用multiparty上传文件-并重命名上传的文件" class="headerlink" title="使用multiparty上传文件,并重命名上传的文件"></a>使用multiparty上传文件,并重命名上传的文件</h2><ul>
+<li>需要将文件上传的页面显示到浏览器上</li>
+</ul>
+<blockquote>
+<p>url请求uploadPage页面<br>if(req.url.includes(uploadPage))<br> 操作: 读取uploadPage.html的文件内容,响应会浏览器</p>
+</blockquote>
+<ul>
+<li><p>点击提交请求form action提交页面postUpload  </p>
+<blockquote>
+<p>else if (req.url.includes(postUpload))</p>
+</blockquote>
+<p>​</p>
+<ul>
+<li><p>文件上传要到指定的位置</p>
+<blockquote>
+<p>操作: 准备一个文件夹</p>
+</blockquote>
+</li>
+<li><p>使用multiparty上传文件</p>
+<blockquote>
+<p>按文档操作: </p>
+<p>【注意】 文档规定用变量 uploadDir 存储指定的文件上传的位置</p>
+</blockquote>
+</li>
+<li><p>给上传文件重命名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> form.parse(req, function (err, fields, files)</span><br><span class="line">field 文本域   files 文件域</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//   拿到提交的数据形式</span></span><br><span class="line">  &#123; </span><br><span class="line">      fields: &#123; nickname: [ <span class="string">'zhangsan'</span> ], sex: [ <span class="string">'男'</span> ] &#125;,</span><br><span class="line">      files: &#123; upload1: [ [Object] ] &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 所以要实现文件重命名 </span></span><br><span class="line">  <span class="comment">//  遍历文件域</span></span><br><span class="line">  Object.keys(files).forEach(key=&gt; &#123;</span><br><span class="line"></span><br><span class="line">       console.log(files[key][<span class="number">0</span>]) 拿到的文件域 files 的内容形式</span><br><span class="line">       &#123; </span><br><span class="line">         fieldName: <span class="string">'upload1'</span>,</span><br><span class="line">         originalFilename: <span class="string">'abc.txt'</span>,</span><br><span class="line">         path:</span><br><span class="line">              <span class="string">'G:\\\11-NodeJS\\练习\\01-upload\\postFile\\nj78yvcRju</span></span><br><span class="line"><span class="string">                0IoX4hxJWXve_S.txt'</span>,</span><br><span class="line">         headers:</span><br><span class="line">               &#123; <span class="string">'content-disposition'</span>: <span class="string">'form-data; name="upload1"; filename="abc.txt"'</span>,</span><br><span class="line">                 <span class="string">'content-type'</span>: <span class="string">'text/plain'</span> &#125;,</span><br><span class="line">         size: <span class="number">5</span></span><br><span class="line">       &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">     </span><br><span class="line">       文件重命名 fs.renameSycn(oldPath,newPath)</span><br><span class="line">       <span class="keyword">const</span> oldPage = files[key][<span class="number">0</span>].path</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="完整代码如下"><a href="#完整代码如下" class="headerlink" title="完整代码如下:"></a>完整代码如下:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = require(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> path = require(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = require(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> multiparty = require(<span class="string">'multiparty'</span>)</span><br><span class="line"><span class="keyword">const</span> util = require(<span class="string">'util'</span>)</span><br><span class="line"><span class="keyword">const</span> server = http.createServer()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server.on(<span class="string">'request'</span>, (req, res) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (req.url.includes(<span class="string">'uploadPage'</span>)) &#123;</span><br><span class="line">        <span class="comment">// 1. 请求html页面</span></span><br><span class="line">        fs.readFile(path.join(__dirname, <span class="string">'/html/uploadPage.html'</span>), (err, data) =&gt; &#123;</span><br><span class="line">            res.setHeader(<span class="string">'content-type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.url.includes(<span class="string">'postUpload'</span>) &amp;&amp; req.method === <span class="string">'POST'</span>) &#123;</span><br><span class="line">        <span class="comment">// 2. 请求form action提交页面postUpload  </span></span><br><span class="line">        <span class="comment">//  2.1 准备一个文件夹 必须用 uploadDir</span></span><br><span class="line">        <span class="keyword">const</span> uploadDir = path.join(__dirname, <span class="string">'.postUpload'</span>)</span><br><span class="line">            <span class="comment">//准备一个文件夹路径,判断该路径是否存在,不存在就新建一个文件夹</span></span><br><span class="line">        <span class="keyword">const</span> exist = fs.existsSync(uploadDir)</span><br><span class="line">        <span class="keyword">if</span> (!exist) &#123;</span><br><span class="line">            <span class="keyword">const</span> err = fs.mkdirSync(uploadDir)</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                console.log(err);</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            console.log(<span class="string">'mkdir ok'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">// 2.2 使用multiparty上传文件,按文档操作</span></span><br><span class="line">        <span class="comment">//  指定存储的文件位置</span></span><br><span class="line">        <span class="keyword">var</span> form = <span class="keyword">new</span> multiparty.Form(&#123;uploadDir&#125;);</span><br><span class="line">        form.parse(req, function (err, fields, files) &#123;</span><br><span class="line">            res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">                <span class="string">'content-type'</span>: <span class="string">'text/plain;charset=utf-8'</span></span><br><span class="line">            &#125;);</span><br><span class="line">            res.write(<span class="string">'received upload:\n\n'</span>);</span><br><span class="line">            res.end(util.inspect(&#123;</span><br><span class="line">                fields: fields,</span><br><span class="line">                files: files</span><br><span class="line">            &#125;));</span><br><span class="line">       <span class="comment">//遍历文件域</span></span><br><span class="line">        Object.keys(files).forEach(key=&gt; &#123;</span><br><span class="line">            <span class="keyword">const</span> oldPage = files[key][<span class="number">0</span>].path</span><br><span class="line">            <span class="keyword">const</span> newPath = <span class="string">'abc.txt'</span></span><br><span class="line">           <span class="keyword">const</span> err =  fs.renameSync(oldPage,newPath)</span><br><span class="line">           <span class="keyword">if</span>(err)&#123;</span><br><span class="line">               console.log(err);</span><br><span class="line">               <span class="keyword">return</span></span><br><span class="line">           &#125;</span><br><span class="line">           console.log(<span class="string">'rename ok!'</span>);</span><br><span class="line">           </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.end(<span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8090</span>, <span class="string">'127.0.0.1'</span>, err =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        console.log(err);</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    console.log(<span class="string">'start OK!'</span>);</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/10/06/使用multiparty上传文件/" data-id="cjn9v9vx0000cv86xpyh2u2r2" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/10/10/nodeJS服务器的创建和重新启动的实现方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          nodeJS服务器的创建和重新启动的实现方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/10/06/关于路由模块/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">关于路由模块的相关知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用multiparty上传文件-并重命名上传的文件"><span class="toc-number">1.</span> <span class="toc-text">使用multiparty上传文件,并重命名上传的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码如下"><span class="toc-number">1.1.</span> <span class="toc-text">完整代码如下:</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

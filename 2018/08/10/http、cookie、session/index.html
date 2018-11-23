@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>PHP_http协议、cookie和session | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="http协议、cookie和session1. http协议1.1 http概念：协议：就是一个规范行为的约定。 http：HyperText（超文本） Transfer（传输） Protocol（协议） 首先http也是一种协议，是一种用来约束    超文本传输 时的行为。 ​     超文本是什么？其实就是html  html全称：HyperText Markup Language  超文本标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP_http协议、cookie和session">
+<meta property="og:url" content="https://Alrxu.github.io/2018/08/10/http、cookie、session/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="http协议、cookie和session1. http协议1.1 http概念：协议：就是一个规范行为的约定。 http：HyperText（超文本） Transfer（传输） Protocol（协议） 首先http也是一种协议，是一种用来约束    超文本传输 时的行为。 ​     超文本是什么？其实就是html  html全称：HyperText Markup Language  超文本标">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/alrxu/1521541410589-1521541412198.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/alrxu/1521542352697.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/alrxu/1521595909958.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/alrxu/1521599849324.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/alrxu/1521603363421.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/alrxu/1521618058059.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/alrxu/1522036413346.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/http、cookie、session/alrxu/1522984061061.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/10/alrxu/1522999966404.png">
+<meta property="og:updated_time" content="2018-08-10T09:26:47.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP_http协议、cookie和session">
+<meta name="twitter:description" content="http协议、cookie和session1. http协议1.1 http概念：协议：就是一个规范行为的约定。 http：HyperText（超文本） Transfer（传输） Protocol（协议） 首先http也是一种协议，是一种用来约束    超文本传输 时的行为。 ​     超文本是什么？其实就是html  html全称：HyperText Markup Language  超文本标">
+<meta name="twitter:image" content="https://alrxu.github.io/2018/08/10/alrxu/1521541410589-1521541412198.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-http、cookie、session" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/08/10/http、cookie、session/" class="article-date">
+  <time datetime="2018-08-10T09:08:28.633Z" itemprop="datePublished">2018-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP_http协议、cookie和session
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="http协议、cookie和session"><a href="#http协议、cookie和session" class="headerlink" title="http协议、cookie和session"></a>http协议、cookie和session</h2><h3 id="1-http协议"><a href="#1-http协议" class="headerlink" title="1. http协议"></a>1. http协议</h3><h4 id="1-1-http概念："><a href="#1-1-http概念：" class="headerlink" title="1.1 http概念："></a>1.1 http概念：</h4><p><strong>协议</strong>：就是一个规范行为的约定。</p>
+<p><strong>http</strong>：HyperText（超文本） Transfer（传输） Protocol（协议）</p>
+<p>首先http也是一种协议，是一种用来约束    <code>超文本传输</code> 时的行为。</p>
+<p>​    </p>
+<p><code>超文本</code>是什么？其实就是<code>html</code></p>
+<blockquote>
+<p>html全称：HyperText Markup Language  超文本标记语言</p>
+</blockquote>
+<p><strong>所以http就是一个专门用来做网页传输的一种协议。</strong></p>
+<h4 id="1-2-http解析"><a href="#1-2-http解析" class="headerlink" title="1.2 http解析"></a>1.2 http解析</h4><p><img src="/2018/08/10/http、cookie、session/../alrxu/1521541410589-1521541412198.png" alt=""></p>
+<p>访问一个网页就是<code>浏览器</code>发起<code>请求</code>，<code>服务器</code>对其<code>响应</code>。</p>
+<p>而http协议就是一套规范<code>请求</code>格式，和<code>响应</code>格式的约定</p>
+<h5 id="1-2-1-请求报文"><a href="#1-2-1-请求报文" class="headerlink" title="1.2.1 请求报文"></a>1.2.1 请求报文</h5><p>​    浏览器发请求到底是发什么东西呢？其实就是一段按照协议格式写好的内容。这段内容叫    <code>请求报文</code></p>
+<p><strong>如何看到<code>请求报文</code></strong></p>
+<p>​    打开浏览器，按F12，弹出底部栏后，再点   <code>Network</code></p>
+<p>然后下面红框区域，就是浏览器本次发送的所有<code>请求记录</code></p>
+<p><img src="/2018/08/10/http、cookie、session/../alrxu/1521542352697.png" alt="">然后点击本次发请求的地址，如<code>127.0.0.1</code></p>
+<p>右侧弹出界面，然后选<code>Headers</code>，右侧有<code>Request</code>和 <code>Response</code>，分别对应的就是<code>请求报文</code>和<code>响应报文</code></p>
+<p>点开<code>Request Headers</code>，默认显示的是浏览器优化后的显示结果，如果要看到<code>请求报文</code>点<code>view source</code>，如图分别为三大部分：<code>请求行</code>、<code>请求头</code>、<code>请求正文（也叫请求体）</code></p>
+<p><img src="/2018/08/10/http、cookie、session/../alrxu/1521595909958.png" alt=""></p>
+<p><code>请求行</code>：指明本次请求是<code>get</code>请求还是<code>post</code>请求（也有其他请求，例如put、delete、trace等，但不常用，常用的主要为get何post），以及指明本次请求遵守的协议版本</p>
+<p><code>请求头</code>：本部分的格式以<code>键值对</code>的形式组成，每行一对。本部分大概的内容有：请求目的地域名、连接状态、缓存状态、发起请求的浏览器信息、字符编码等。请求头后面会有一个空行，作为请求头部分结束的标记。</p>
+<p><code>请求正文</code>：本次请求发送给服务器的附加信息。一般<code>get请求</code>的请求正文为空</p>
+<p>post请求的请求报文:</p>
+<p>首先，界面代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"login.php"</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">'id'</span> <span class="attr">placeholder</span>=<span class="string">"请输入账号"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">'pwd'</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当点击提交后，提交到login.php。使用post请求。</p>
+<p>我们看到的请求报文如下：</p>
+<p><img src="/2018/08/10/http、cookie、session/../alrxu/1521599849324.png" alt=""></p>
+<p>无论是<code>get</code>还是<code>post</code>发起的请求，格式都是三大部分，<code>请求行</code>、<code>请求头</code>、<code>请求体</code>。</p>
+<p>主要差别在，请求行里，变成了<code>post</code>请求，请求体也就是请求正文里有了内容。<code>get</code>请求体里没内容主要是因为<code>get</code>请求把数据主要通过网址传递过去。而<code>post</code>是通过请求报文传递过去</p>
+<blockquote>
+<p>总结： 请求报文里主要包含了要访问的文件、和在请求时传递给服务器的数据、发请求的系统环境等。</p>
+</blockquote>
+<p>附：请求头部分内容说明</p>
+<table>
+<thead>
+<tr>
+<th><strong>请求头</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Host</strong></td>
+<td>接受请求的服务器地址，可以是IP:端口号，也可以是域名</td>
+</tr>
+<tr>
+<td><strong>User-Agent</strong></td>
+<td>发送请求的应用程序名称</td>
+</tr>
+<tr>
+<td><strong>Connection</strong></td>
+<td>指定与连接相关的属性，如Connection:Keep-Alive</td>
+</tr>
+<tr>
+<td><strong>Accept-Charset</strong></td>
+<td>通知服务端可以发送的编码格式</td>
+</tr>
+<tr>
+<td><strong>Accept-Encoding</strong></td>
+<td>通知服务端可以发送的数据压缩格式</td>
+</tr>
+<tr>
+<td><strong>Accept-Language</strong></td>
+<td>通知服务端可以发送的语言</td>
+</tr>
+</tbody>
+</table>
+<h5 id="1-2-2-响应报文"><a href="#1-2-2-响应报文" class="headerlink" title="1.2.2 响应报文"></a>1.2.2 响应报文</h5><p>响应报文就是浏览器收到请求后，对浏览器所做出的响应（即回应）。包含三大部分：<code>状态行</code>，<code>响应头</code>，<code>响应体（响应正文）</code></p>
+<p><img src="/2018/08/10/http、cookie、session/../alrxu/1521603363421.png" alt=""></p>
+<p>状态行：（HTTP/1.1）协议版本、（200）状态码、（OK）状态消息</p>
+<p>响应头：包含响应时间、服务器环境、响应体的格式等，响应头后面会有一个空行代表结尾。</p>
+<p>响应体：就是发回的文件内容。例如浏览器请求index.html界面，那么假设服务器能正常访问到这个文件的情况下，服务器会把index.html里的内容当做响应体发回给浏览器，然后浏览器自己再解析。</p>
+<blockquote>
+<p>总结：响应报文就是服务器对浏览器这次请求的一个回应，要么告诉浏览器失败，要么给浏览器发回一段内容并告诉它解析格式。</p>
+</blockquote>
+<p>附：</p>
+<p>状态码一览</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>响应成功</td>
+</tr>
+<tr>
+<td>302</td>
+<td>发生跳转</td>
+</tr>
+<tr>
+<td>400</td>
+<td>客户端请求有语法错误，不被服务器理解</td>
+</tr>
+<tr>
+<td>403</td>
+<td>服务器收到请求，但拒绝提供服务</td>
+</tr>
+<tr>
+<td>404</td>
+<td>请求的资源不存在</td>
+</tr>
+<tr>
+<td>500</td>
+<td>服务器内部错误</td>
+</tr>
+</tbody>
+</table>
+<h5 id="1-2-3-一次完整的浏览器请求和服务器响应图解"><a href="#1-2-3-一次完整的浏览器请求和服务器响应图解" class="headerlink" title="1.2.3 一次完整的浏览器请求和服务器响应图解"></a>1.2.3 一次完整的浏览器请求和服务器响应图解</h5><p><img src="/2018/08/10/http、cookie、session/../alrxu/1521618058059.png" alt=""></p>
+<p>说明：</p>
+<p>​    1.服务器为什么能收到浏览器的请求，是因为服务器装了Apache。</p>
+<p>​    2.如果浏览器请求的是.html或者.txt等格式的文件，服务器会直接把这个文件找到并读取内容做成响应报文发回给浏览器</p>
+<p>​    3.如果浏览器请求的是.php文件，那么会先把这个php文件先交给    <code>php7apache2_4.dll</code>去执行（本处细节在第一天有讲），把执行后的结果再做成响应报文发回给浏览器</p>
+<p>​    4.如果服务器找不到浏览器要请求的文件，响应报文中也有响应体，响应体是一个404 Not Found的页面，状态码是404</p>
+<h3 id="2-cookie"><a href="#2-cookie" class="headerlink" title="2. cookie"></a>2. cookie</h3><h4 id="2-1-cookie是什么"><a href="#2-1-cookie是什么" class="headerlink" title="2.1 cookie是什么"></a>2.1 cookie是什么</h4><p>​    比如说你去超市买食品，带回家后突然发现食品过期了，这个时候你直接去超市，超市可不认识你。但是超市认识你的小票。凭小票就能知道你上一次来超市的各种信息。</p>
+<p>​    那么Cookie 就像是在超级市场买东西拿到的小票，由超市（Server）发给消费者（Browser），超市方面不用记住每一个消费者的脸，但是他们认识消费者手里的小票（Cookie），可以通过小票知道消费者之前的一些消费信息（在服务端产生的数据）。</p>
+<p>总结：获取浏览器的cookie语法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_COOKIE[<span class="string">'名'</span>];</span><br></pre></td></tr></table></figure>
+<p>设置cookie的有效期,要用到cookie的第三个参数，设置失效时间</p>
+<p>用法如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setcookie(<span class="string">'名'</span>,<span class="string">'值'</span>,time() + 秒数);</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setcookie(<span class="string">'login'</span>,<span class="string">'ok'</span>,time() + <span class="number">60</span>); <span class="comment">//代表60秒后失效</span></span><br></pre></td></tr></table></figure>
+<p>#### </p>
+<h5 id="2-2-1-浏览器端自行删除："><a href="#2-2-1-浏览器端自行删除：" class="headerlink" title="2.2.1 浏览器端自行删除："></a>2.2.1 浏览器端自行删除：</h5><p>​    首先按F12打开开发者工具，然后点击    <code>application</code>，再点击  <code>cookies</code> ，右侧找到并点击你要删除的那条cookie，最后点<code>x</code>就删掉了。</p>
+<p>如下图：</p>
+<p><img src="/2018/08/10/http、cookie、session/../alrxu/1522036413346.png" alt=""></p>
+<h5 id="2-2-2-服务器端用代码删除："><a href="#2-2-2-服务器端用代码删除：" class="headerlink" title="2.2.2 服务器端用代码删除："></a>2.2.2 服务器端用代码删除：</h5><p>我们知道，cookie是有有效期的，所以其实删除cookie的思路就是设置cookie，让它的过期时间为过去的时间即可</p>
+<p>语法如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setcookie(<span class="string">'名'</span>,<span class="string">'值'</span>,过去的某个时间);</span><br></pre></td></tr></table></figure>
+<p>例:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setcookie(<span class="string">'closeAD'</span>,<span class="string">'off'</span>,time() - <span class="number">3600</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-cookie案例1：记住登录名"><a href="#2-3-cookie案例1：记住登录名" class="headerlink" title="2.3 cookie案例1：记住登录名"></a>2.3 cookie案例1：记住登录名</h4><p>有很多的网站，当你登录后，它会记住你的用户名，下次再登录时直接把用户名显示在界面上了，</p>
+<p>其实也是用cookie，把信息保存在本地，在需要时再显示出来。</p>
+<p>步骤：</p>
+<p>1.新建<code>login.php</code>页面，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    </span><br><span class="line">    //先判断cookie里有没有username，如果有，就取出来赋值给变量$username，如果没有，就给$username赋值为空字符</span><br><span class="line">    $username = isset( $_COOKIE[&apos;username&apos;] ) ? $_COOKIE[&apos;username&apos;] : &apos;&apos;;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=&quot;check.php&quot; method=&quot;post&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 如果有cookie.此时value会为保存的用户名，否则为空 --&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&apos;username&apos; placeholder=&quot;请输入用户名&quot; value=&quot;&lt;?php echo $username; ?&gt;&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&apos;userpwd&apos; placeholder=&quot;请输入密码&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>2.新建<code>check.php</code>页面，代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"ie=edge"</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//取出提交来的账号和密码</span></span><br><span class="line">$username = $_POST[<span class="string">'username'</span>];</span><br><span class="line">$pwd = $_POST[<span class="string">'userpwd'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断账号密码是否正确</span></span><br><span class="line"><span class="keyword">if</span>($username == <span class="string">'admin'</span> &amp;&amp; $pwd==<span class="string">'123456'</span>)&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'登录成功'</span>;</span><br><span class="line">    <span class="comment">//如果正确，把用户名写入浏览器cookie</span></span><br><span class="line">    setcookie(<span class="string">'username'</span>,$username,time() + <span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>);</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'账号或密码错误！'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>此时，当登录成功一次后，下次再打开登录页面，即<code>login.php</code>会发现上面有登录名了</p>
+<h4 id="2-4-cookie案例2：保持登录状态"><a href="#2-4-cookie案例2：保持登录状态" class="headerlink" title="2.4 cookie案例2：保持登录状态"></a>2.4 cookie案例2：保持登录状态</h4><h5 id="2-4-1-搭建登录界面"><a href="#2-4-1-搭建登录界面" class="headerlink" title="2.4.1 搭建登录界面"></a>2.4.1 搭建登录界面</h5><p>新建  <code>login.html</code>文件，代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        form&#123;</span></span><br><span class="line"><span class="undefined">            width: 180px;</span></span><br><span class="line"><span class="undefined">            margin: 100px auto;</span></span><br><span class="line"><span class="undefined">            font-size: 12px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 提交到check.php页面 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"check.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入账号"</span> <span class="attr">name</span>=<span class="string">'username'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span> <span class="attr">name</span>=<span class="string">'pwd'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"登录"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-4-2-验证账号密码是否正确"><a href="#2-4-2-验证账号密码是否正确" class="headerlink" title="2.4.2 验证账号密码是否正确"></a>2.4.2 验证账号密码是否正确</h5><p>在登录界面可知，用户登录后，会提交到 <code>check.php</code>页面，因此新建  <code>check.php</code>文件，在此做账号密码验证</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment">//判断是否有提交账号和密码数据过来</span></span><br><span class="line">   <span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">'username'</span>]) &amp;&amp; <span class="keyword">isset</span>($_POST[<span class="string">'pwd'</span>]))&#123;</span><br><span class="line">    </span><br><span class="line">       <span class="comment">//取出账号和密码</span></span><br><span class="line">       $username = $_POST[<span class="string">'username'</span>];</span><br><span class="line">       $pwd = $_POST[<span class="string">'pwd'</span>];</span><br><span class="line"></span><br><span class="line">       <span class="comment">//打开数据库</span></span><br><span class="line">       $link = mysqli_connect(<span class="string">'localhost'</span>,<span class="string">'root'</span>,<span class="string">'root'</span>,<span class="string">'test'</span>);</span><br><span class="line">   </span><br><span class="line">       <span class="comment">//准备sql查询语句</span></span><br><span class="line">       $sql = <span class="string">"select *from user where username='$username' and password='$pwd'"</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//查询结果</span></span><br><span class="line">       $result = mysqli_query($link,$sql);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//转换成数组</span></span><br><span class="line">       $data = mysqli_fetch_all($result,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//关闭数据库连接</span></span><br><span class="line">       mysqli_close($link);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//如果结果不为0，证明有此账号密码，则登录成功，给它显示网页</span></span><br><span class="line">       <span class="keyword">if</span>(count($data) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">           	<span class="comment">//去主页面</span></span><br><span class="line">            header(<span class="string">'location:main.php'</span>);</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		   <span class="comment">//账号密码错误，去登录页</span></span><br><span class="line">            header(<span class="string">'location:login.html'</span>);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>再新建<code>main.php</code>，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h2&gt;欢迎登录：某某！您的余额为：0元&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">    &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit eos deleniti perspiciatis ea enim ipsa nam ipsam aliquid facere obcaecati rerum, iusto atque error beatae excepturi tempore alias natus! Vel?&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="2-4-3-存在的问题："><a href="#2-4-3-存在的问题：" class="headerlink" title="2.4.3 存在的问题："></a>2.4.3 存在的问题：</h5><ol>
+<li>在  <code>main.php</code>里，希望把登录用户的信息展示出来，例如，展示他的用户名和余额。</li>
+</ol>
+<ol start="2">
+<li>用户不登录，直接访问 <code>main.php</code>这个页面，也能直接出这个界面。</li>
+</ol>
+<p>解决思路：我们在账号密码验证正确后，把用户名、余额存到cookie里，然后在main.php里判断是否有这个cookie，如果有，证明登录成功可以访问，把cookie的内容取出来显示到界面上。如果没有，就调回login.html。</p>
+<h5 id="2-4-3-把登录信息存到cookie"><a href="#2-4-3-把登录信息存到cookie" class="headerlink" title="2.4.3 把登录信息存到cookie"></a>2.4.3 把登录信息存到cookie</h5><p>修改  <code>check.php</code> 中 <code>if( count($data) &gt; 0 )</code> 部分，代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//信息存到cookie</span></span><br><span class="line">setcookie(<span class="string">'name'</span>,$username);</span><br><span class="line">setcookie(<span class="string">'money'</span>,$data[<span class="number">0</span>][<span class="string">'money'</span>]);</span><br><span class="line"></span><br><span class="line">header(<span class="string">'location:main.php'</span>);</span><br></pre></td></tr></table></figure>
+<p>然后修改  <code>main.php</code>的代码，让它有cookie才能访问，没有调回登录，代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">//取cookie</span></span><br><span class="line">    $username = $_COOKIE[<span class="string">'name'</span>];</span><br><span class="line">    $money = $_COOKIE[<span class="string">'money'</span>];</span><br><span class="line">	<span class="comment">//判断是否存在cookie</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>($username) &amp;&amp; <span class="keyword">isset</span>($money)):</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"ie=edge"</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h2&gt;欢迎登录：<span class="meta">&lt;?php</span> <span class="keyword">echo</span> $username; <span class="meta">?&gt;</span>您的余额为：<span class="meta">&lt;?php</span> <span class="keyword">echo</span> $money; <span class="meta">?&gt;</span>元&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">    &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit eos deleniti perspiciatis ea enim ipsa nam ipsam aliquid facere obcaecati rerum, iusto atque error beatae excepturi tempore alias natus! Vel?&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">	    <span class="comment">//如果不存在cookie，证明没登录过，返回登录页</span></span><br><span class="line">        header(<span class="string">'location:login.html'</span>);</span><br><span class="line">    <span class="keyword">endif</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>至此，我们完成了登录状态保持。</p>
+<h3 id="3-session"><a href="#3-session" class="headerlink" title="3. session"></a>3. session</h3><h4 id="3-1-cookie可以被伪造"><a href="#3-1-cookie可以被伪造" class="headerlink" title="3.1 cookie可以被伪造"></a>3.1 cookie可以被伪造</h4><p>​    由于cookie是存在于浏览器端的特性，所以cookie是可以被用户自由修改、伪造。</p>
+<p>例：我们做的  <code>保持登录状态</code> 案例。我们保存的用户信息都一目了然的存在于浏览器。很不安全，如图：</p>
+<p><img src="/2018/08/10/http、cookie、session/alrxu/1522984061061.png" alt=""></p>
+<p>此时，我只要在电脑上随意修改，例如修改金额为<code>999999</code>，那么打开网站时也是<code>999999</code>。并且，其他人只要知道了你的用户名，那么也可以自行添加cookie，骗过服务器，直接访问<code>main.php</code>。</p>
+<h4 id="3-2-session基本使用"><a href="#3-2-session基本使用" class="headerlink" title="3.2 session基本使用"></a>3.2 session基本使用</h4><p>如果要把原本cookie可以存的东西存在服务端，有一种技术叫session即可实现。</p>
+<h5 id="3-2-1-session介绍"><a href="#3-2-1-session介绍" class="headerlink" title="3.2.1 session介绍"></a>3.2.1 session介绍</h5><p>​    session可以理解为是服务器上的一个保险柜，把所有数据都保存在服务器的保险柜里，只给浏览器一把钥匙用来访问这些数据。</p>
+<p>如图：</p>
+<p><img src="/2018/08/10/http、cookie、session/../alrxu/1522999966404.png" alt=""></p>
+<p>由图，我们可知：数据都是存在服务器端，而浏览器端只存一把 <code>钥匙</code>。因为要把 <code>钥匙</code>给浏览器存起来，存钥匙的技术还是cookie，所以说session技术是基于cookie的。</p>
+<h5 id="3-2-1-新增session语法："><a href="#3-2-1-新增session语法：" class="headerlink" title="3.2.1 新增session语法："></a>3.2.1 新增session语法：</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一定要先调用此函数开启session</span></span><br><span class="line">session_start();</span><br><span class="line"><span class="comment">//通过超全局变量添加一条session记录</span></span><br><span class="line">$_SESSION[<span class="string">'名'</span>]= 值;</span><br></pre></td></tr></table></figure>
+<p>之前我们用cookie值一般都是给字符串，但是在session中，除了可以给基本类型，还可以给复杂数据类型</p>
+<p>例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一定要先调用此函数开启session</span></span><br><span class="line">session_start();</span><br><span class="line"><span class="comment">//保存基本类型</span></span><br><span class="line">$_SESSION[<span class="string">'name'</span>] = <span class="string">'jack'</span>;</span><br><span class="line"><span class="comment">//保存复杂数据类型</span></span><br><span class="line">$_SESSION[<span class="string">'books'</span>] = <span class="keyword">array</span>(<span class="string">'C语言从入门到入土'</span>,<span class="string">'MySQL优化之道：从删库到跑路'</span>);</span><br></pre></td></tr></table></figure>
+<p>注意：新增时一定要先使用   <code>session_start();</code> 开启session</p>
+<h5 id="3-2-2-读取session语法"><a href="#3-2-2-读取session语法" class="headerlink" title="3.2.2 读取session语法"></a>3.2.2 读取session语法</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一定要先调用此函数开启session</span></span><br><span class="line">session_start();</span><br><span class="line"><span class="comment">//直接通过超全局变量可以取到session记录</span></span><br><span class="line">var_dump($_SESSION);</span><br><span class="line"><span class="comment">//单独取出某条$_SESSION记录</span></span><br><span class="line"><span class="keyword">echo</span> $_SESSION[<span class="string">'name'</span>];</span><br></pre></td></tr></table></figure>
+<h5 id="3-2-3-修改session语法"><a href="#3-2-3-修改session语法" class="headerlink" title="3.2.3 修改session语法"></a>3.2.3 修改session语法</h5><p>直接对已经存在的session重新赋值就是修改</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开启session</span></span><br><span class="line">session_start();</span><br><span class="line"><span class="comment">//修改</span></span><br><span class="line">$_SESSION[<span class="string">'name'</span>] = <span class="string">'rose'</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="3-2-4-删除session语法"><a href="#3-2-4-删除session语法" class="headerlink" title="3.2.4 删除session语法"></a>3.2.4 删除session语法</h5><p>使用 <code>unset</code>函数可以删除session</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开启session</span></span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除保存的session</span></span><br><span class="line"><span class="comment">// 删除变量的值</span></span><br><span class="line"><span class="keyword">unset</span>($_SESSION[<span class="string">'name'</span>]);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 总结：只要是想操作session，请记得都要开启session</p>
+</blockquote>
+<h5 id="3-2-5-session关闭浏览器就删除了"><a href="#3-2-5-session关闭浏览器就删除了" class="headerlink" title="3.2.5 session关闭浏览器就删除了"></a>3.2.5 session关闭浏览器就删除了</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/08/10/http、cookie、session/" data-id="cjn9v9w1a000nv86xwondrlwu" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/08/14/ajax的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Ajax的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/08/02/文件上传中文编码、英雄列表/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">PHP上传中文文件时的编码问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#http协议、cookie和session"><span class="toc-number">1.</span> <span class="toc-text">http协议、cookie和session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-http协议"><span class="toc-number">1.1.</span> <span class="toc-text">1. http协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-http概念："><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 http概念：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-http解析"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 http解析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-请求报文"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">1.2.1 请求报文</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-响应报文"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">1.2.2 响应报文</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-一次完整的浏览器请求和服务器响应图解"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">1.2.3 一次完整的浏览器请求和服务器响应图解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-cookie"><span class="toc-number">1.2.</span> <span class="toc-text">2. cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-cookie是什么"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 cookie是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-1-浏览器端自行删除："><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2.2.1 浏览器端自行删除：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-服务器端用代码删除："><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.2.2 服务器端用代码删除：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-cookie案例1：记住登录名"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.3 cookie案例1：记住登录名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-cookie案例2：保持登录状态"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.4 cookie案例2：保持登录状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-1-搭建登录界面"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">2.4.1 搭建登录界面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-2-验证账号密码是否正确"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2.4.2 验证账号密码是否正确</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-3-存在的问题："><span class="toc-number">1.2.3.3.</span> <span class="toc-text">2.4.3 存在的问题：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-3-把登录信息存到cookie"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">2.4.3 把登录信息存到cookie</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-session"><span class="toc-number">1.3.</span> <span class="toc-text">3. session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-cookie可以被伪造"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 cookie可以被伪造</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-session基本使用"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 session基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-session介绍"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1 session介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-新增session语法："><span class="toc-number">1.3.2.2.</span> <span class="toc-text">3.2.1 新增session语法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-2-读取session语法"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">3.2.2 读取session语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-3-修改session语法"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">3.2.3 修改session语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-4-删除session语法"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">3.2.4 删除session语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-5-session关闭浏览器就删除了"><span class="toc-number">1.3.2.6.</span> <span class="toc-text">3.2.5 session关闭浏览器就删除了</span></a></li></ol></li></ol></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

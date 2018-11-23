@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>PHP上传中文文件时的编码问题 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.上传中文文件时的编码问题1.1 问题描述 当我们写一个上传文件操作时，如果上传的文件时中文名，可能会存在乱码问题。 例：首页代码如下：  1234&amp;lt;form action=&quot;upload.php&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&amp;gt;    &amp;lt;input type=&quot;file&quot; name=&quot;icon&quot;&amp;gt;    &amp;lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP上传中文文件时的编码问题">
+<meta property="og:url" content="https://Alrxu.github.io/2018/08/02/文件上传中文编码、英雄列表/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.上传中文文件时的编码问题1.1 问题描述 当我们写一个上传文件操作时，如果上传的文件时中文名，可能会存在乱码问题。 例：首页代码如下：  1234&amp;lt;form action=&quot;upload.php&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&amp;gt;    &amp;lt;input type=&quot;file&quot; name=&quot;icon&quot;&amp;gt;    &amp;lt;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/02/文件上传中文编码、英雄列表/alrxu/1523519124645.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/02/文件上传中文编码、英雄列表/alrxu/1523519274015.png">
+<meta property="og:updated_time" content="2018-08-02T09:04:46.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP上传中文文件时的编码问题">
+<meta name="twitter:description" content="1.上传中文文件时的编码问题1.1 问题描述 当我们写一个上传文件操作时，如果上传的文件时中文名，可能会存在乱码问题。 例：首页代码如下：  1234&amp;lt;form action=&quot;upload.php&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&amp;gt;    &amp;lt;input type=&quot;file&quot; name=&quot;icon&quot;&amp;gt;    &amp;lt;">
+<meta name="twitter:image" content="https://alrxu.github.io/2018/08/02/文件上传中文编码、英雄列表/alrxu/1523519124645.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-文件上传中文编码、英雄列表" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/08/02/文件上传中文编码、英雄列表/" class="article-date">
+  <time datetime="2018-08-02T09:01:23.522Z" itemprop="datePublished">2018-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP上传中文文件时的编码问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="1-上传中文文件时的编码问题"><a href="#1-上传中文文件时的编码问题" class="headerlink" title="1.上传中文文件时的编码问题"></a>1.上传中文文件时的编码问题</h2><h3 id="1-1-问题描述"><a href="#1-1-问题描述" class="headerlink" title="1.1 问题描述"></a>1.1 问题描述</h3><ul>
+<li>当我们写一个上传文件操作时，如果上传的文件时中文名，可能会存在乱码问题。</li>
+<li>例：首页代码如下：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"upload.php"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"icon"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"上传"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>提交到upload.php，upload.php代码如下：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//拿到临时文件位置</span></span><br><span class="line">    $tmp = $_FILES[<span class="string">'icon'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">    <span class="comment">//拿到文件名</span></span><br><span class="line">    $name = $_FILES[<span class="string">'icon'</span>][<span class="string">'name'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用文件移动函数移动到当前位置来</span></span><br><span class="line">    move_uploaded_file($tmp,<span class="string">'./'</span>.$name);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们可以看到，如果选择中文文件，例如上传下面这张图</li>
+</ul>
+<p><img src="/2018/08/02/文件上传中文编码、英雄列表/alrxu/1523519124645.png" alt=""></p>
+<ul>
+<li>则发现：<strong>文件名会变成乱码！</strong>，如图</li>
+</ul>
+<p><img src="/2018/08/02/文件上传中文编码、英雄列表/alrxu/1523519274015.png" alt=""></p>
+<h3 id="1-2-原因解析"><a href="#1-2-原因解析" class="headerlink" title="1.2 原因解析"></a>1.2 原因解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网页编码是UTF-8编码，通过使用utf-8字符集的网页在把文件名传过来时也是UTF-8的编码。但是phpStduy服务器使用的是中文windows系统，中文windows系统的内置字符集处理编码是GBK。所以当把UTF-8的编码的文件要写入到操作系统时，它会按照GBK的编码来写入。编码格式不对，自然出现乱码。</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-解决办法"><a href="#1-3-解决办法" class="headerlink" title="1.3 解决办法"></a>1.3 解决办法</h3><ul>
+<li>只需要将UTF-8的文件名先转成GBK的文件名，就可以成功写入了。</li>
+<li>需要用到  <code>iconv</code>  函数</li>
+<li>用法：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">转换后的结果 = iconv(<span class="string">'原编码格式'</span>,<span class="string">'转成什么编码格式'</span>,<span class="string">'转什么内容'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析：<ul>
+<li>参数1：传入原本的编码格式，传字符串</li>
+<li>参数2：传入目标编码格式，也是字符串</li>
+<li>参数3：转什么内容</li>
+<li>返回值：会把转换的内容按照目标编码格式转换后当返回值返回。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>最终代码为：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//拿到临时文件位置</span></span><br><span class="line">    $tmp = $_FILES[<span class="string">'icon'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">    <span class="comment">//拿到文件名</span></span><br><span class="line">    $name = $_FILES[<span class="string">'icon'</span>][<span class="string">'name'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//转换成GBK的文件名</span></span><br><span class="line">    $newName = iconv(<span class="string">'utf-8'</span>,<span class="string">'gbk'</span>,$name);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用文件移动函数移动到当前位置来</span></span><br><span class="line">    move_uploaded_file($tmp,<span class="string">'./'</span>.$newName);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/08/02/文件上传中文编码、英雄列表/" data-id="cjn9v9vxo000gv86xg4bqyq06" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/08/10/http、cookie、session/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          PHP_http协议、cookie和session
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/08/01/MySQL数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">PHP、MySQL操作数据库</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-上传中文文件时的编码问题"><span class="toc-number">1.</span> <span class="toc-text">1.上传中文文件时的编码问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-问题描述"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-原因解析"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 原因解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-解决办法"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 解决办法</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

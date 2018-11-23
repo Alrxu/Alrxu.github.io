@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>封装ajax、jQuery中的ajax | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="封装ajax、jQuery中的ajax1. 封装ajax代码 把函数都封装到一个对象里，作为对象的方法，即可解决这些函数名污染的问题  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950var myJq = new Object();/*  params是一个对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="封装ajax、jQuery中的ajax">
+<meta property="og:url" content="https://Alrxu.github.io/2018/08/21/封装、jQuery中的ajax/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="封装ajax、jQuery中的ajax1. 封装ajax代码 把函数都封装到一个对象里，作为对象的方法，即可解决这些函数名污染的问题  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950var myJq = new Object();/*  params是一个对象">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/21/alrxu/1524645682971.png">
+<meta property="og:image" content="https://alrxu.github.io/2018/08/21/alrxu/1524646937255.png">
+<meta property="og:updated_time" content="2018-08-21T05:50:58.474Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="封装ajax、jQuery中的ajax">
+<meta name="twitter:description" content="封装ajax、jQuery中的ajax1. 封装ajax代码 把函数都封装到一个对象里，作为对象的方法，即可解决这些函数名污染的问题  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950var myJq = new Object();/*  params是一个对象">
+<meta name="twitter:image" content="https://alrxu.github.io/2018/08/21/alrxu/1524645682971.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-封装、jQuery中的ajax" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/08/21/封装、jQuery中的ajax/" class="article-date">
+  <time datetime="2018-08-21T05:44:24.858Z" itemprop="datePublished">2018-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      封装ajax、jQuery中的ajax
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="封装ajax、jQuery中的ajax"><a href="#封装ajax、jQuery中的ajax" class="headerlink" title="封装ajax、jQuery中的ajax"></a>封装ajax、jQuery中的ajax</h1><h2 id="1-封装ajax代码"><a href="#1-封装ajax代码" class="headerlink" title="1. 封装ajax代码"></a>1. 封装ajax代码</h2><ul>
+<li>把函数都封装到一个对象里，作为对象的方法，即可解决这些函数名污染的问题</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myJq = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  params是一个对象</span></span><br><span class="line"><span class="comment">  params.type     请求类型</span></span><br><span class="line"><span class="comment">  params.url      请求网址</span></span><br><span class="line"><span class="comment">  params.data     请求参数</span></span><br><span class="line"><span class="comment">  params.success  回调函数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">myJq.ajax = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//1. 创建xhr</span></span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.1 判断是get还是post</span></span><br><span class="line">    <span class="keyword">if</span>(params.type == <span class="string">"get"</span>)&#123;</span><br><span class="line">        <span class="comment">// 拼接参数</span></span><br><span class="line">        params.url += <span class="string">"?"</span> + params.data;</span><br><span class="line">	    <span class="comment">// 设置请求行</span></span><br><span class="line">        xhr.open(params.type, params.url);</span><br><span class="line">    </span><br><span class="line">	    <span class="comment">//3. 发送请求</span></span><br><span class="line">        xhr.send(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">	    <span class="comment">// 设置请求行</span></span><br><span class="line">        xhr.open(params.type, params.url);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//设置请求头</span></span><br><span class="line">        xhr.setRequestHeader(<span class="string">'Content-type'</span>,<span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">    </span><br><span class="line">	    <span class="comment">//3. 发送请求</span></span><br><span class="line">        xhr.send(params.data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//4. 拿到响应体</span></span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</span><br><span class="line"></span><br><span class="line">          <span class="comment">//转成JSON对象</span></span><br><span class="line">          <span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(xhr.responseText);</span><br><span class="line"></span><br><span class="line">          <span class="comment">//交给调用者处理</span></span><br><span class="line">          params.success(json);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-jQuery封装的ajax工具"><a href="#2-jQuery封装的ajax工具" class="headerlink" title="2. jQuery封装的ajax工具"></a>2. jQuery封装的ajax工具</h2><ul>
+<li>jQuery是一个JS库：即一套用JS封装好的函数库</li>
+<li>jQuery本身就已经封装好了方便程序员调用ajax的方法，功能比我们刚刚自己封装的更强大</li>
+</ul>
+<h3 id="2-1-ajax"><a href="#2-1-ajax" class="headerlink" title="2.1 $.ajax"></a>2.1 $.ajax</h3><ul>
+<li>jQuery中用来发ajax请求的方法，跟封装的方法类似，但是功能更强大</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传入一个对象</span></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    </span><br><span class="line">  <span class="comment">//请求网址</span></span><br><span class="line">  url: <span class="string">'./data.php'</span>,</span><br><span class="line">  <span class="comment">//请求类型</span></span><br><span class="line">  type: <span class="string">'post'</span>,</span><br><span class="line">  <span class="comment">//服务器响应数据类型，如果是跨域，可以改成jsonp</span></span><br><span class="line">  dataType: <span class="string">'json'</span>,</span><br><span class="line">  <span class="comment">//发送给服务器的数据（请求体）,如果是get请求数据写在url,如果是post才写data属性</span></span><br><span class="line">  data: &#123; <span class="attr">id</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  <span class="comment">//回调函数：响应回来调用的函数</span></span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//请求失败触发</span></span><br><span class="line">  error: <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>常用选项参数介绍：</p>
+<ul>
+<li><p>url：请求地址</p>
+</li>
+<li><p>type：请求方法，默认为 <code>get</code></p>
+</li>
+<li><p>dataType：服务端响应数据类型，一般只是在跨域时写jsonp，其他时候可以不写，自动根据响应头判断返回数据</p>
+</li>
+<li><p>data：需要传递到服务端的数据，如果 GET 则通过 URL 传递，如果 POST 则通过请求体传递</p>
+</li>
+<li><p>timeout：请求超时时间</p>
+</li>
+<li><p>success：请求成功之后触发</p>
+</li>
+<li><p>error：请求失败触发</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>例子代码如下：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url:<span class="string">'http://api.douban.com/v2/movie/top250'</span>,</span><br><span class="line">    type:<span class="string">'get'</span>,</span><br><span class="line">    dataType:<span class="string">'jsonp'</span>,</span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用$.ajax方法有个不太方便的地方是：每次要指定type属性，即请求的类型</p>
+</blockquote>
+<h3 id="2-2-get"><a href="#2-2-get" class="headerlink" title="2.2 $.get"></a>2.2 $.get</h3><ul>
+<li>专门用来只做  <code>get</code>  请求的方法，参数与 <code>ajax</code> 方法一样，只是不用写 <code>type</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.get(&#123;</span><br><span class="line">    url:<span class="string">'http://api.douban.com/v2/movie/top250'</span>,</span><br><span class="line">    dataType:<span class="string">'jsonp'</span>,</span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>或者可以不传对象，传四个参数<ul>
+<li>参数1：请求url</li>
+<li>参数2：要传递给服务器的数据（如果不传数据可以不写此参数）</li>
+<li>参数3：回调函数，函数的第一个参数是服务器返回的数据</li>
+<li>参数4：dataType，返回的数据格式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.get(<span class="string">'http://api.douban.com/v2/movie/top250'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'data'</span>);</span><br><span class="line">    </span><br><span class="line">&#125;,<span class="string">'jsonp'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-post"><a href="#2-3-post" class="headerlink" title="2.3 $.post"></a>2.3 $.post</h3><ul>
+<li>专门用来只做  <code>post</code>  请求的方法，参数与 <code>ajax</code> 方法一样，只是不用写 <code>type</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.post(&#123;</span><br><span class="line">    url:<span class="string">'./data.php'</span>,</span><br><span class="line">    <span class="comment">//传字符串</span></span><br><span class="line">    data:<span class="string">"name=jack&amp;pwd=123"</span>,</span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此方法要给服务器传递数据时，需要写  <code>data</code>  属性，属性值可以是  <code>&quot;name=jack&amp;pwd=123&quot;</code>  这样的字符串，也可以是对象， 代码如下：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.post(&#123;</span><br><span class="line">    url:<span class="string">'./data.php'</span>,</span><br><span class="line">    <span class="comment">//传对象</span></span><br><span class="line">    data:&#123; <span class="attr">name</span>:<span class="string">"jack"</span>, <span class="attr">pwd</span>:<span class="number">123</span> &#125;,</span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>或者可以不传对象，传四个参数</p>
+<ul>
+<li>参数1：请求url</li>
+<li>参数2：要传递给服务器的数据（如果不传数据可以不写此参数）</li>
+<li>参数3：回调函数，函数的第一个参数是服务器返回的数据</li>
+<li>参数4：dataType，返回的数据格式</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.get(<span class="string">'http://api.douban.com/v2/movie/top250'</span>,</span><br><span class="line">      &#123;<span class="attr">name</span>:<span class="string">"jack"</span>, <span class="attr">pwd</span>:<span class="number">123</span>&#125;,</span><br><span class="line">      <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">'data'</span>);</span><br><span class="line">       &#125;,</span><br><span class="line">      <span class="string">'jsonp'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="3-jQuery中关于ajax部分的补充"><a href="#3-jQuery中关于ajax部分的补充" class="headerlink" title="3. jQuery中关于ajax部分的补充"></a>3. jQuery中关于ajax部分的补充</h2><h3 id="3-1-serialize方法"><a href="#3-1-serialize方法" class="headerlink" title="3.1 serialize方法"></a>3.1 serialize方法</h3><ul>
+<li>根据刚刚的注册案例得知，我们需要在一个表单中提交所有数据时，需要一个一个取出元素的值，很不方便</li>
+<li>serialize方法可以让我们一下子获得表单中的值，并拼接成字符串形式</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sendData = $(<span class="string">'#ajaxForm'</span>).serialize();</span><br><span class="line"><span class="built_in">console</span>.log(sendData);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>结果：</p>
+<p><img src="/2018/08/21/封装、jQuery中的ajax/../alrxu/1524645682971.png" alt=""></p>
+<blockquote>
+<p>注意：只有表单里加了 name属性的，通过serialize方法可以把它取到值作为参数，没加name属性的不会取到。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-2-jQuery中ajax的全局方法"><a href="#3-2-jQuery中ajax的全局方法" class="headerlink" title="3.2 jQuery中ajax的全局方法"></a>3.2 jQuery中ajax的全局方法</h3><h4 id="3-2-1-ajaxSetup"><a href="#3-2-1-ajaxSetup" class="headerlink" title="3.2.1 ajaxSetup"></a>3.2.1 ajaxSetup</h4><ul>
+<li>ajax默认设置方法。可以设置一些jQuery中的ajax请求的默认参数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.ajaxSetup(&#123;</span><br><span class="line">  url: <span class="string">"http://www.zll.com"</span>,</span><br><span class="line">  type: <span class="string">"POST"</span>,</span><br><span class="line">  data:&#123; <span class="attr">name</span>:<span class="string">"jack"</span>,<span class="attr">age</span>:<span class="number">16</span> &#125;</span><br><span class="line">  ......</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>说明：<ul>
+<li>当这么设置后，再用jQuery发ajax请求时，如果不指定url,type和data，那么将自动把url变为<a href="http://www.zll.com，发送类型为post，数据为jack,16的这个对象。" target="_blank" rel="noopener">www.zll.com，发送类型为post，数据为jack,16的这个对象。</a></li>
+</ul>
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   $.ajaxSetup(&#123;</span><br><span class="line">       url: <span class="string">"http://api.douban.com/v2/movie/top250"</span>,</span><br><span class="line">       type: <span class="string">"POST"</span>,</span><br><span class="line">       data: &#123; <span class="attr">name</span>: <span class="string">"jack"</span>, <span class="attr">age</span>: <span class="number">16</span> &#125;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果没有设置url，会自动按全局默认设置的url来</span></span><br><span class="line">   $.ajax(&#123;</span><br><span class="line">       dataType:<span class="string">'jsonp'</span>,</span><br><span class="line">       success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">           <span class="built_in">console</span>.log(data);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/21/封装、jQuery中的ajax/../alrxu/1524646937255.png" alt=""></p>
+<h4 id="3-2-2-ajaxStart"><a href="#3-2-2-ajaxStart" class="headerlink" title="3.2.2 ajaxStart"></a>3.2.2 ajaxStart</h4><ul>
+<li>当全局有任意一次jQuery做的ajax请求发起时调用的方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ajaxStart(<span class="function"><span class="keyword">function</span> (<span class="params">xhr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 全局有任意一次 AJAX 请求开始（必须是 jQuery 发起的请求）</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'有请求了'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-3-ajaxStop"><a href="#3-2-3-ajaxStop" class="headerlink" title="3.2.3 ajaxStop"></a>3.2.3 ajaxStop</h4><ul>
+<li>当全局有任意一次jQuery做的ajax请求结束时调用的方法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ajaxStop(<span class="function"><span class="keyword">function</span> (<span class="params">xhr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 全局有任意一次 AJAX 请求结束（必须是 jQuery 发起的请求）</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'请求结束了'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>更多jQuery中的ajax方法，可查阅</p>
+<p><a href="http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/08/21/封装、jQuery中的ajax/" data-id="cjn9v9vxg000fv86xdyh5412n" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/08/25/css3介绍和transition过渡/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          CSS3介绍和transition过渡
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/08/19/模板引擎、跨域、JSONP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Ajax_模板引擎、同源&amp;跨域</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#封装ajax、jQuery中的ajax"><span class="toc-number">1.</span> <span class="toc-text">封装ajax、jQuery中的ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-封装ajax代码"><span class="toc-number">1.1.</span> <span class="toc-text">1. 封装ajax代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-jQuery封装的ajax工具"><span class="toc-number">1.2.</span> <span class="toc-text">2. jQuery封装的ajax工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-ajax"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 $.ajax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-get"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 $.get</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-post"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 $.post</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-jQuery中关于ajax部分的补充"><span class="toc-number">1.3.</span> <span class="toc-text">3. jQuery中关于ajax部分的补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-serialize方法"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 serialize方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-jQuery中ajax的全局方法"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 jQuery中ajax的全局方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-ajaxSetup"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1 ajaxSetup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-ajaxStart"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">3.2.2 ajaxStart</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-ajaxStop"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">3.2.3 ajaxStop</span></a></li></ol></li></ol></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>

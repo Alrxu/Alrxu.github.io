@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>自定义模块的相关知识 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自定义模块的相关知识一、自定义模块且自己使用: 导出:   module.exports  直接导出(不建议):     一个文件/模块只能导出一个module.exports = 成员  以对象的形式导出(建议使用):    导出对象【三种写法】 ① module.exports = {}② module.exports.属性1 = 值1 module.exports.属性2 = 值2 ③ ex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义模块的相关知识">
+<meta property="og:url" content="https://Alrxu.github.io/2018/10/04/自定义模块相关知识/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="自定义模块的相关知识一、自定义模块且自己使用: 导出:   module.exports  直接导出(不建议):     一个文件/模块只能导出一个module.exports = 成员  以对象的形式导出(建议使用):    导出对象【三种写法】 ① module.exports = {}② module.exports.属性1 = 值1 module.exports.属性2 = 值2 ③ ex">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-04T05:15:52.123Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义模块的相关知识">
+<meta name="twitter:description" content="自定义模块的相关知识一、自定义模块且自己使用: 导出:   module.exports  直接导出(不建议):     一个文件/模块只能导出一个module.exports = 成员  以对象的形式导出(建议使用):    导出对象【三种写法】 ① module.exports = {}② module.exports.属性1 = 值1 module.exports.属性2 = 值2 ③ ex">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/Alrxu.github.io/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Alrxu.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/archives">归档</a>
+        
+          <a class="main-nav-link" href="/Alrxu.github.io/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Alrxu.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-自定义模块相关知识" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Alrxu.github.io/2018/10/04/自定义模块相关知识/" class="article-date">
+  <time datetime="2018-10-04T05:17:00.552Z" itemprop="datePublished">2018-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      自定义模块的相关知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="自定义模块的相关知识"><a href="#自定义模块的相关知识" class="headerlink" title="自定义模块的相关知识"></a>自定义模块的相关知识</h2><h3 id="一、自定义模块且自己使用"><a href="#一、自定义模块且自己使用" class="headerlink" title="一、自定义模块且自己使用:"></a>一、自定义模块且自己使用:</h3><ol>
+<li><p>导出: </p>
+<blockquote>
+<p>module.exports</p>
+<ul>
+<li>直接导出(不建议): </li>
+</ul>
+</blockquote>
+<blockquote>
+<p>一个文件/模块只能导出一个<br>module.exports = 成员</p>
+<ul>
+<li>以对象的形式导出(建议使用):</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>导出对象【三种写法】</p>
+<p>① module.exports = {}<br>② module.exports.属性1 = 值1<br> module.exports.属性2 = 值2</p>
+<p>③ exports.属性1 = 值1<br> exports.属性2 = 值2</p>
+<p>注意:不能这么写 exports = {}</p>
+</blockquote>
+</li>
+</ol>
+<ol start="2">
+<li><p>导入 require()</p>
+<blockquote>
+<p>【注意】</p>
+<p>核心模块和第三方模块导入直接写名就行<br>自定义模块导入要写全路径 用path</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="二、-将自定义模块上传到-npmjs-org"><a href="#二、-将自定义模块上传到-npmjs-org" class="headerlink" title="二、 将自定义模块上传到 npmjs.org"></a>二、 将自定义模块上传到 npmjs.org</h3><p>前提:<br>​            </p>
+<ul>
+<li>① 注册账号并且使用邮箱激活</li>
+<li>② 项目中，必须要有package.json</li>
+</ul>
+<blockquote>
+<p>name:别人导入你的时候，要写的名称<br>main:加载时候，指向的这个文件,如果没有指定就找 到当前第三方包根目录的index.js<br>keywords:搜索关键字,让别人能搜索你</p>
+</blockquote>
+<p>可以直接 在根目录打开黑窗，npm init -y 自动生成package.json,注意要去修改或填写 name,main,keyword…</p>
+<ul>
+<li>③  使用 npm 这个工具上传【都是要在项目根目录】</li>
+</ul>
+<blockquote>
+<p>1、npm adduser【连接到npmjs.org】<br>2、npm publish 发布即可<br>​<br>注意:</p>
+<p>   (1) 包的名称必须唯一<br>   (2) 如果更改了包之后，想再次发布，必须版本号递增<br>   (3) 删除某个版本: npm unpublish <a href="mailto:xncalc@1.0.0" target="_blank" rel="noopener">xncalc@1.0.0</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://Alrxu.github.io/2018/10/04/自定义模块相关知识/" data-id="cjn9v9vxq000hv86xuxyw85l2" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/Alrxu.github.io/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/Alrxu.github.io/2018/10/06/关于路由模块/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          关于路由模块的相关知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Alrxu.github.io/2018/10/04/使用第三方模块/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">使用第三方模板相关知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义模块的相关知识"><span class="toc-number">1.</span> <span class="toc-text">自定义模块的相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、自定义模块且自己使用"><span class="toc-number">1.1.</span> <span class="toc-text">一、自定义模块且自己使用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、-将自定义模块上传到-npmjs-org"><span class="toc-number">1.2.</span> <span class="toc-text">二、 将自定义模块上传到 npmjs.org</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 John Doe&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/Alrxu.github.io/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Alrxu.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/Alrxu.github.io/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/Alrxu.github.io/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/Alrxu.github.io/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/Alrxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/Alrxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Alrxu.github.io/js/script.js"></script>
+<script src="/Alrxu.github.io/js/elevator.js"></script>
+  </div>
+</body>
+</html>
